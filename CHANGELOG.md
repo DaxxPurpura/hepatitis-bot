@@ -1,5 +1,9 @@
 # Changelog
 
+## [1.1.2] - 2025-12-16
+
+- Las frases ahora soportan texto en los autores.
+
 ## [1.1.1] - 2025-12-16
 
 - Añadido comando /repohepatitis para ver el repo de Hepatitis B(ot).
