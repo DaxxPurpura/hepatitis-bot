@@ -4,10 +4,13 @@ from dotenv import load_dotenv
 import logging
 import os
 import random
+import re
 import time
 
 load_dotenv()
-token = os.getenv('DISCORD_TOKEN')
+token = os.getenv('DISCORD_TOKEN') # Agregá el token de tu bot al .env
+serverID = os.getenv('TEST_SERVER') # Agregá el ID de tu server al .env
+godUserID = os.getenv('GOD_USER') # Agregá tu ID de usuario al .env
 
 handler = logging.FileHandler(filename='discord.log', encoding='utf-8', mode='w')
 
@@ -18,13 +21,13 @@ client = discord.Client(intents=intents)
 bot = commands.Bot(command_prefix='/', intents=intents)
 tree = bot.tree
 
-ELMASCAPITO = 528940084142014484
-BOT_VERSION = "1.1.0"
+ELMASCAPITO = godUserID
+BOT_VERSION = "1.1.1"
+BOT_REPO = "https://github.com/DaxxPurpura/hepatitis-bot"
 
 # Servers autorizados
-# Agregá tu server para poder testear los comandos allá
 HEPATITIS = discord.Object(id=1018626508853629149)
-TEST = discord.Object(id=1449941097299050649)
+TEST = discord.Object(id=serverID)
 
 # Sincronizar servers
 @bot.event
@@ -35,9 +38,15 @@ async def on_ready():
     global MASCOTAS
     MASCOTAS = await load_mascotas()
 
-# No le den importancia, funciona solo con ELMASCAPITO B)
+
 @bot.event
 async def on_message(message):
+    # Actualiza la lista MASCOTAS con nuevas imagenes
+    if message.channel.id == CANALMASCOTAS and message.attachments:
+        for attachment in message.attachments:
+            MASCOTAS.append(attachment)
+
+    # No le den importancia, funciona solo con ELMASCAPITO B)
     if message.author.id != ELMASCAPITO:
         return
     
@@ -77,7 +86,12 @@ async def on_message(message):
 async def version(interaction: discord.Interaction):
     await interaction.response.send_message(BOT_VERSION, ephemeral=True)
 
-# Cargar frases. Separarlas en frase y autores.
+# Agregá tu server a `guilds` para que el comando aparezca en tu server
+@tree.command(name="repohepatitis", description="Muestra la versión del Hepatitis B(ot)", guilds=[HEPATITIS, TEST])
+async def repo(interaction: discord.Interaction):
+    await interaction.response.send_message(BOT_REPO, ephemeral=True)
+
+# Cargar frases , separarlas en frase y autores
 def load_frases():
     frases = []
     with open("frases.txt", "r", encoding="utf-8") as f:
@@ -89,7 +103,7 @@ def load_frases():
             texto, authorRaw = line.split("=", 1)
             texto = texto.replace("\\n", "\n")
 
-            authorsID = [int(uid.strip()) for uid in authorRaw.split("|") if uid.strip().isdigit()]
+            authorsID = [uid.strip() for uid in authorRaw.split("|") if uid.strip()]
             frases.append((texto, authorsID))
     return frases
 
@@ -111,12 +125,15 @@ def get_time_left(userID, command: str):
         timeLeft = MASCOTA_COOLDOWN - (time.time() - mascotaCooldowns[userID])
         return timeLeft
 
-# Obtener apodo de autores. Separar autores
+# Obtener apodo de autores , separar autores
 async def separate_authors(interaction, authorsID):
     authors = []
     guild = interaction.guild
 
     for userAuthor in authorsID:
+        if not userAuthor.isdigit():
+            authors.append(userAuthor)
+            continue
         member = None
         if guild:
             member = guild.get_member(userAuthor)
@@ -178,11 +195,14 @@ async def forzar_frase(interaction: discord.Interaction, index: int):
 
 CANALMASCOTAS = 1442192026962759795
 
+# Cargar mascotas , separar archivos en un mismo mensaje
 async def load_mascotas():
     mascotas = []
 
-    async for message in bot.get_channel(CANALMASCOTAS).history():
-        if message.attachments == []:
+    channel = await bot.fetch_channel(CANALMASCOTAS)
+
+    async for message in channel.history():
+        if not message.attachments:
             continue
 
         for attachment in message.attachments:
@@ -208,12 +228,16 @@ async def mascota(interaction: discord.Interaction):
             await interaction.response.send_message(embed=embed, ephemeral=True)
             return
         mascotaCooldowns[userID] = time.time()
+
+    if not MASCOTAS:
+        await interaction.response.send_message("No hay mascotas cargadas", ephemeral=True)
+        return
     
     mascota = random.choice(MASCOTAS)
     while mascota == lastMascota:
         mascota = random.choice(MASCOTAS)
     lastMascota = mascota
 
-    await interaction.response.send_message(mascota)
+    await interaction.response.send_message(mascota.url)
 
 bot.run(token, log_handler=handler, log_level=logging.DEBUG)
