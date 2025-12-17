@@ -1,5 +1,6 @@
 import discord
-import random
+import time
+from utils.choose_random import choose_random
 from utils.cooldowns import add_cooldown, get_cooldown
 from utils.load_attachments import load_attachments
 
@@ -21,7 +22,7 @@ def mascotas_commands(tree, serverList, godUserID):
         if userID != godUserID:
             cooldown = get_cooldown(userID, "mascota", MASCOTA_COOLDOWN)
             if cooldown > 0:
-                embed = discord.Embed(description=f"# Este comando está en cooldown \n### Esperá **{round(cooldown)} segundos** para volver a usarlo.")
+                embed = discord.Embed(description=f"# Este comando está en cooldown \n### Esperá **{time.strftime('%M:%S', time.gmtime(cooldown))} segundos** para volver a usarlo.")
                 await interaction.response.send_message(embed=embed, ephemeral=True)
                 return
             add_cooldown(userID, "mascota")
@@ -30,12 +31,8 @@ def mascotas_commands(tree, serverList, godUserID):
             embed = discord.Embed(description="### No hay mascotas cargadas")
             await interaction.response.send_message(embed=embed, ephemeral=True)
             return
-    
-        mascota = random.choice(MASCOTAS)
-        while mascota == lastMascota:
-            mascota = random.choice(MASCOTAS)
-        lastMascota = mascota
 
+        mascota, lastMascota = choose_random(MASCOTAS, lastMascota)
         await interaction.response.send_message(mascota.url)
 
 # Actualiza la lista MASCOTAS con imagenes nuevas

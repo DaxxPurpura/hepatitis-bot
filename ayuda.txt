@@ -1,0 +1,23 @@
+## Comandos de Hepatitis B(ot)
+### /frasefunny: Invoca una frase del https://discord.com/channels/1018626508853629149/1429287959303164085 (30 segundos)
+### /forzarfrase [index: int]: Fuerza la frase número [index] del https://discord.com/channels/1018626508853629149/1429287959303164085 (15 minutos)
+### /frases: Muestra la lista de frases para saber el índice de cada frase
+
+### /mascota: Invoca una mascota de https://discord.com/channels/1018626508853629149/1442192026962759795 (30 segundos)
+
+### /queopinas:  Preguntale a Hepatitis B(ot) que opina acerca de lo que se está hablando (30 segundos)
+### /forzarqueopinas [index: int]: Fuerza la opinión número [index] de Hepatitis B(ot) (15 minutos)
+### /opiniones: Muestra la lista de opiniones para saber el índice de cada opinión
+
+### /funfact: Invoca un facto jijoso de Hepatitis B(ot) (30 segundos)
+### /forzarfunfact [index: int]: Fuerza el facto jijoso número [index] de Hepatitis B(ot) (15 minutos)
+### /funfacts: Muestra la lista de factos jijosos para saber el índice de cada facto jijoso
+
+### /mensaje [mensaje]: Enviá [mensaje] como Hepatitis B(ot). Puede responder a otros mensajes (20 minutos)
+### /reaccion [emoji]: Hepatitis B(ot) reacciona con [emoji] al mensaje al que estás respondiendo (15 minutos)
+### /noreaccion [emoji]: Hepatitis B(ot) quita la reacción [emoji] al mensaje al que estás respondiendo (15 minutos)
+
+### /version: Muestra la versión de Hepatitis B(ot)
+### /repo: Muestra el repositorio de GitHub de Hepatitis B(ot)
+### /changelog: Muestra el changelog de Hepatitis B(ot)
+### /ayuda: Este comando pues, que más querés saber

@@ -1,12 +1,13 @@
 import discord
-import random
+import time
+from utils.choose_random import choose_random
 from utils.cooldowns import add_cooldown, get_cooldown
-from utils.format_text import load_txt_file, separate_authors
+from utils.format_text import load_text, format_text
 
-FRASES = load_txt_file("frases.txt")
+FRASES = load_text("frases.txt")
 lastFrase = ""
 FRASES_COOLDOWN = 30
-FORZAR_FRASES_COOLDOWN = 1800 # 30 mins
+FORZAR_FRASES_COOLDOWN = 900 # 15 mins
 
 def frases_commands(tree, serverList, godUserID):
     @tree.command(name="frasefunny", description="Invoca una frase del museo de frases", guilds=serverList)
@@ -17,7 +18,7 @@ def frases_commands(tree, serverList, godUserID):
         if userID != godUserID:
             cooldown = get_cooldown(userID, "frasefunny", FRASES_COOLDOWN)
             if cooldown > 0:
-                embed = discord.Embed(description=f"# Este comando está en cooldown \n### Esperá **{round(cooldown)} segundos** para volver a usarlo.")
+                embed = discord.Embed(description=f"# Este comando está en cooldown \n### Esperá **{time.strftime('%M:%S', time.gmtime(cooldown))} segundos** para volver a usarlo.")
                 await interaction.response.send_message(embed=embed, ephemeral=True)
                 return
             add_cooldown(userID, "frasefunny")
@@ -26,13 +27,9 @@ def frases_commands(tree, serverList, godUserID):
             embed = discord.Embed(description="### No hay frases cargadas")
             await interaction.response.send_message(embed=embed, ephemeral=True)
             return
-    
-        frase, authorsRaw = random.choice(FRASES)
-        while frase == lastFrase:
-            frase, authorsRaw = random.choice(FRASES)
-        lastFrase = frase
 
-        authors = await separate_authors(interaction, authorsRaw)
+        [frase, authors], lastFrase = choose_random(FRASES, lastFrase)
+        authors = await format_text(interaction, authors, "user")
         embed = discord.Embed(description=f"{frase} \n### -ㅤ{authors}")
         await interaction.response.send_message(embed=embed)
 
@@ -42,7 +39,7 @@ def frases_commands(tree, serverList, godUserID):
         if userID != godUserID:
             cooldown = get_cooldown(userID, "forzarfrase", FORZAR_FRASES_COOLDOWN)
             if cooldown > 0:
-                embed = discord.Embed(description=f"# Este comando está en cooldown \n### Esperá **{round(cooldown)} segundos** para volver a usarlo.")
+                embed = discord.Embed(description=f"# Este comando está en cooldown \n### Esperá **{time.strftime('%M:%S', time.gmtime(cooldown))} segundos** para volver a usarlo.")
                 await interaction.response.send_message(embed=embed, ephemeral=True)
                 return
             add_cooldown(userID, "forzarfrase")
@@ -58,7 +55,7 @@ def frases_commands(tree, serverList, godUserID):
             await interaction.response.send_message(embed=embed, ephemeral=True)
             return
     
-        frase, authorsRaw = FRASES[realIndex]
-        authors = await separate_authors(interaction, authorsRaw)
+        frase, authors = FRASES[realIndex]
+        authors = await format_text(interaction, authors, "user")
         embed = discord.Embed(description=f"{frase} \n### -ㅤ{authors}")
         await interaction.response.send_message(embed=embed)

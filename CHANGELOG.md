@@ -1,5 +1,22 @@
 # Changelog
 
+## [1.3.0] - 2025-12-17
+
+- (1.3.0... el tiempo pasa tan rápido...)
+- Añadido comando /ayuda para ver todos los comandos de Hepatitis B(ot), sus funciones y cooldowns.
+- Reducción de cooldowns!
+    - Cooldown de /forzarfrase cambió de 30 minutos a 15 minutos.
+    - Cooldown de /forzarqueopinas cambió de 30 minutos a 15 minutos.
+    - Cooldown de /forzarfunfact cambió de 30 minutos a 15 minutos.
+    - Cooldown de /mensaje cambió de 30 minutos a 20 minutos.
+    - Cooldown de /reaccion cambió de 20 minutos a 15 minutos.
+    - Cooldown de /noreaccion cambió de 20 minutos a 15 minutos.
+- Los cooldowns ahora se muestran como minutos y segundos en vez de solo segundos.
+- Opiniones ahora soportan emojis de servers!!
+- Comando /versionhepatitis cambió a /version
+- Comando /repohepatitis cambió a /repo
+- Comando /changeloghepatitis cambió a /changelog
+
 ## [1.2.0] - 2025-12-17
 
 - (1.2.0! Yupii!!)

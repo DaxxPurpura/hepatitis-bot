@@ -1,12 +1,13 @@
 import discord
-import random
+import time
+from utils.choose_random import choose_random
 from utils.cooldowns import add_cooldown, get_cooldown
-from utils.format_text import load_txt_file
+from utils.format_text import load_text
 
-FUN_FACTS = load_txt_file("fun_facts.txt")
+FUN_FACTS = load_text("fun_facts.txt")
 lastFunFact = ""
 FUN_FACTS_COOLDOWN = 30
-FORZAR_FUN_FACTS_COOLDOWN = 1800 # 30 mins
+FORZAR_FUN_FACTS_COOLDOWN = 900 # 15 mins
 
 def fun_facts_commands(tree, serverList, godUserID):
     @tree.command(name="funfact", description="Invoca un facto jijoso de Hepatitis B(ot)", guilds=serverList)
@@ -17,7 +18,7 @@ def fun_facts_commands(tree, serverList, godUserID):
         if userID != godUserID:
             cooldown = get_cooldown(userID, "funfact", FUN_FACTS_COOLDOWN)
             if cooldown > 0:
-                embed = discord.Embed(description=f"# Este comando está en cooldown \n### Esperá **{round(cooldown)} segundos** para volver a usarlo.")
+                embed = discord.Embed(description=f"# Este comando está en cooldown \n### Esperá **{time.strftime('%M:%S', time.gmtime(cooldown))} segundos** para volver a usarlo.")
                 await interaction.response.send_message(embed=embed, ephemeral=True)
                 return
             add_cooldown(userID, "funfact")
@@ -26,12 +27,8 @@ def fun_facts_commands(tree, serverList, godUserID):
             embed = discord.Embed(description="### No hay fun facts cargados")
             await interaction.response.send_message(embed=embed, ephemeral=True)
             return
-    
-        funFact = random.choice(FUN_FACTS)
-        while funFact == lastFunFact:
-            funFact = random.choice(FUN_FACTS)
-        lastFunFact = funFact
-
+        
+        funFact, lastFunFact = choose_random(FUN_FACTS, lastFunFact)
         embed = discord.Embed(description=f"{funFact}")
         await interaction.response.send_message(embed=embed)
 
@@ -41,7 +38,7 @@ def fun_facts_commands(tree, serverList, godUserID):
         if userID != godUserID:
             cooldown = get_cooldown(userID, "forzarfunfact", FORZAR_FUN_FACTS_COOLDOWN)
             if cooldown > 0:
-                embed = discord.Embed(description=f"# Este comando está en cooldown \n### Esperá **{round(cooldown)} segundos** para volver a usarlo.")
+                embed = discord.Embed(description=f"# Este comando está en cooldown \n### Esperá **{time.strftime('%M:%S', time.gmtime(cooldown))} segundos** para volver a usarlo.")
                 await interaction.response.send_message(embed=embed, ephemeral=True)
                 return
             add_cooldown(userID, "forzarfunfact")

@@ -1,12 +1,10 @@
 import discord
+import time
 from utils.cooldowns import add_cooldown, get_cooldown
 
-MENSAJE_COOLDOWN = 1800 # 30 mins
-MENSAJE_COOLDOWN_GLOBAL = 900 # 15 mins
-REACCION_COOLDOWN = 1200 # 20 mins
-REACCION_COOLDOWN_GLOBAL = 600 # 10 mins
-NOREACCION_COOLDOWN = 1200 # 20 mins
-NOREACCION_COOLDOWN_GLOBAL = 600 # 10 mins
+MENSAJE_COOLDOWN = 1200 # 20 mins
+REACCION_COOLDOWN = 900 # 15 mins
+NOREACCION_COOLDOWN = 900 # 15 mins
 
 async def control_commands(message, bot, godUserID):
     userID = message.author.id
@@ -15,7 +13,7 @@ async def control_commands(message, bot, godUserID):
         if userID != godUserID:
             cooldown = get_cooldown(userID, "mensaje", MENSAJE_COOLDOWN)
             if cooldown > 0:
-                embed = discord.Embed(description=f"# Este comando está en cooldown \n### Esperá **{round(cooldown)} segundos** para volver a usarlo.")
+                embed = discord.Embed(description=f"# Este comando está en cooldown \n### Esperá **{time.strftime('%M:%S', time.gmtime(cooldown))} segundos** para volver a usarlo.")
                 await message.channel.send(embed=embed, delete_after=3)
                 return
             add_cooldown(userID, "mensaje")
@@ -33,7 +31,7 @@ async def control_commands(message, bot, godUserID):
         if userID != godUserID:
             cooldown = get_cooldown(userID, "reaccion", REACCION_COOLDOWN)
             if cooldown > 0:
-                embed = discord.Embed(description=f"# Este comando está en cooldown \n### Esperá **{round(cooldown)} segundos** para volver a usarlo.")
+                embed = discord.Embed(description=f"# Este comando está en cooldown \n### Esperá **{time.strftime('%M:%S', time.gmtime(cooldown))} segundos** para volver a usarlo.")
                 await message.channel.send(embed=embed, delete_after=3)
                 return
             add_cooldown(userID, "reaccion")
@@ -49,7 +47,7 @@ async def control_commands(message, bot, godUserID):
         if userID != godUserID:
             cooldown = get_cooldown(userID, "noreaccion", NOREACCION_COOLDOWN)
             if cooldown > 0:
-                embed = discord.Embed(description=f"# Este comando está en cooldown \n### Esperá **{round(cooldown)} segundos** para volver a usarlo.")
+                embed = discord.Embed(description=f"# Este comando está en cooldown \n### Esperá **{time.strftime('%M:%S', time.gmtime(cooldown))} segundos** para volver a usarlo.")
                 await message.channel.send(embed=embed, delete_after=3)
                 return
             add_cooldown(userID, "noreaccion")

@@ -24,7 +24,7 @@ client = discord.Client(intents=intents)
 bot = commands.Bot(command_prefix='/', intents=intents)
 tree = bot.tree
 
-BOT_VERSION = "1.2.0"
+BOT_VERSION = "1.3.0"
 BOT_REPO = "https://github.com/DaxxPurpura/hepatitis-bot"
 
 # Servers autorizados
@@ -53,9 +53,7 @@ frases_commands(tree, [HEPATITIS, TEST], godUserID)
 
 fun_facts_commands(tree, [HEPATITIS, TEST], godUserID)
 
-with open("CHANGELOG.md", "r", encoding="utf-8") as file:
-    changelog = file.read()
-info_commands(tree, [HEPATITIS, TEST], BOT_VERSION, BOT_REPO, changelog)
+info_commands(tree, [HEPATITIS, TEST], BOT_VERSION, BOT_REPO)
 
 mascotas_commands(tree, [HEPATITIS, TEST], godUserID)
 
