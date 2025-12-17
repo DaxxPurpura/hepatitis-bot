@@ -5,8 +5,10 @@ import logging
 import os
 from commands.control import control_commands
 from commands.frases import frases_commands
+from commands.fun_fact import fun_facts_commands
 from commands.info import info_commands
 from commands.mascotas import init_mascotas, mascotas_commands, update_mascotas
+from commands.que_opinas import opiniones_commands
 
 load_dotenv()
 token = os.getenv('DISCORD_TOKEN') # Agregá la token de tu bot al .env
@@ -22,7 +24,7 @@ client = discord.Client(intents=intents)
 bot = commands.Bot(command_prefix='/', intents=intents)
 tree = bot.tree
 
-BOT_VERSION = "1.1.3"
+BOT_VERSION = "1.2.0"
 BOT_REPO = "https://github.com/DaxxPurpura/hepatitis-bot"
 
 # Servers autorizados
@@ -49,8 +51,14 @@ async def on_message(message):
 
 frases_commands(tree, [HEPATITIS, TEST], godUserID)
 
-info_commands(tree, [HEPATITIS, TEST], BOT_VERSION, BOT_REPO)
+fun_facts_commands(tree, [HEPATITIS, TEST], godUserID)
+
+with open("CHANGELOG.md", "r", encoding="utf-8") as file:
+    changelog = file.read()
+info_commands(tree, [HEPATITIS, TEST], BOT_VERSION, BOT_REPO, changelog)
 
 mascotas_commands(tree, [HEPATITIS, TEST], godUserID)
+
+opiniones_commands(tree, [HEPATITIS, TEST], godUserID)
 
 bot.run(token, log_handler=handler, log_level=logging.DEBUG)

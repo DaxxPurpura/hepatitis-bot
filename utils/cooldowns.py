@@ -4,6 +4,10 @@ cooldowns = {
     "frasefunny": {},
     "forzarfrase": {},
     "mascota": {},
+    "queopinas": {},
+    "forzarqueopinas": {},
+    "funfact": {},
+    "forzarfunfact": {},
     "mensaje": {},
     "reaccion": {},
     "noreaccion": {}

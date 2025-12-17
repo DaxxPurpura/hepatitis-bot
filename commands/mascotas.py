@@ -1,6 +1,6 @@
 import discord
 import random
-from utils.cooldowns import add_cooldown, get_cooldown, remove_cooldown
+from utils.cooldowns import add_cooldown, get_cooldown
 from utils.load_attachments import load_attachments
 
 MASCOTAS = []

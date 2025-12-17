@@ -1,5 +1,5 @@
 import discord
-from utils.cooldowns import add_cooldown, get_cooldown, remove_cooldown
+from utils.cooldowns import add_cooldown, get_cooldown
 
 MENSAJE_COOLDOWN = 1800 # 30 mins
 MENSAJE_COOLDOWN_GLOBAL = 900 # 15 mins

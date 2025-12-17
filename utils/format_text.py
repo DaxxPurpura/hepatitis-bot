@@ -9,10 +9,14 @@ def load_txt_file(txtFile: str):
             line = line.strip()
             if not line:
                 continue
-
-            texto, authorsRaw = line.split("=")
-            texto = texto.replace("\\n", "\n")
-            frases.append((texto, authorsRaw))
+            
+            if "=" in line:
+                texto, authorsRaw = line.split("=")
+                texto = texto.replace("\\n", "\n")
+                frases.append((texto, authorsRaw))
+            else:
+                line = line.replace("\\n", "\n")
+                frases.append(line)
     return frases
 
 # Separar autores , obtener apodo de autores
