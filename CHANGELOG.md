@@ -1,5 +1,15 @@
 # Changelog
 
+## [1.1.3] - 2025-12-16
+
+- (ptm ya tres updates en el mismo dia).
+- Añadida clase Debug (thx Haziel).
+- Comando /forzarfrase ahora puede ser utilizado por todos (se supone que esto era para debuggear y nada más, pero dado que los admins también pueden usarlo y la mayoría en el server es admin, no vale la pena, así que ahora es para todos, pero tiene cooldown)
+- Comandos /mensaje, /reaccion y /noreaccion ahora pueden ser utlizados por todos (sé que está feo gatekeepear comandos, pero pensé que iba a armar quilombo. Para evitar eso, los comandos tienen cooldown).
+- Corregida la descripción del comando /repohepatitis.
+- Reesctructuración del código para facilitar legibilidad.
+- (yap king, I know)
+
 ## [1.1.2] - 2025-12-16
 
 - Las frases ahora soportan texto en los autores.

@@ -1,3 +1,5 @@
 .venv/
 discord.log
 .env
+commands/__pycache__/
+utils/__pycache__/
