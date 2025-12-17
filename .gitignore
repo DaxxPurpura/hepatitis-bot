@@ -1,5 +1,9 @@
+# Carpetas
 .venv/
-discord.log
-.env
 commands/__pycache__/
 utils/__pycache__/
+__pycache__/
+
+# Archivos
+discord.log
+.env
