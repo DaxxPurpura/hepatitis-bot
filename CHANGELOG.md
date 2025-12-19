@@ -1,5 +1,9 @@
 # Changelog
 
+## [1.4.1] - 2025-12-19
+
+- Fun fact "Sabías que... este mensaje tiene solo un 0.000001% de probabilidad de aparecer." ahora realmente tiene 0.000001% de probabilidad de aparecer (de nuevo, pero esta vez las probabilidades son correctas. Thx Geo).
+
 ## [1.4.0] - 2025-12-19
 
 - (Holly Molly)
