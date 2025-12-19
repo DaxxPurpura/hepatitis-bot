@@ -10,7 +10,8 @@ cooldowns = {
     "forzarfunfact": {},
     "mensaje": {},
     "reaccion": {},
-    "noreaccion": {}
+    "noreaccion": {},
+    "oye": {}
 }
 
 # Añadir cooldown a userID

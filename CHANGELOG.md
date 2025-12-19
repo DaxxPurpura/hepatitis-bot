@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.4.0] - 2025-12-19
+
+- (Holly Molly)
+- Añadido comando /oye para "oye, no nada.".
+- Añadida la posibilidad de que Hepatitis B(ot) se una a canales de voz (no funciona xd).
+- Comandos /mensaje, /reaccion y /noreaccion ahora solo se activan si el mensaje empieza con el comando.
+- Fun fact "Sabías que... este mensaje tiene solo un 0.000001% de probabilidad de aparecer." ahora realmente tiene 0.000001% de probabilidad de aparecer (o cerca).
+
 ## [1.3.0] - 2025-12-17
 
 - (1.3.0... el tiempo pasa tan rápido...)
@@ -13,9 +21,9 @@
     - Cooldown de /noreaccion cambió de 20 minutos a 15 minutos.
 - Los cooldowns ahora se muestran como minutos y segundos en vez de solo segundos.
 - Opiniones ahora soportan emojis de servers!!
-- Comando /versionhepatitis cambió a /version
-- Comando /repohepatitis cambió a /repo
-- Comando /changeloghepatitis cambió a /changelog
+- Comando /versionhepatitis cambió a /version.
+- Comando /repohepatitis cambió a /repo.
+- Comando /changeloghepatitis cambió a /changelog.
 
 ## [1.2.0] - 2025-12-17
 

@@ -6,4 +6,7 @@ def choose_random(list, lastChosen = None, canRepeat: bool = False):
         while chosen == lastChosen:
             chosen = random.choice(list)
         lastChosen = chosen
-    return chosen, lastChosen
+        
+        return chosen, lastChosen
+    
+    return chosen

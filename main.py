@@ -8,6 +8,7 @@ from commands.frases import frases_commands
 from commands.fun_fact import fun_facts_commands
 from commands.info import info_commands
 from commands.mascotas import init_mascotas, mascotas_commands, update_mascotas
+from commands.oye import oye_commands, detect_victims
 from commands.que_opinas import opiniones_commands
 
 load_dotenv()
@@ -24,8 +25,9 @@ client = discord.Client(intents=intents)
 bot = commands.Bot(command_prefix='/', intents=intents)
 tree = bot.tree
 
-BOT_VERSION = "1.3.0"
+BOT_VERSION = "1.4.0"
 BOT_REPO = "https://github.com/DaxxPurpura/hepatitis-bot"
+botVoiceChat = None
 
 # Servers autorizados
 HEPATITIS = discord.Object(id=1018626508853629149)
@@ -45,9 +47,22 @@ async def on_ready():
 async def on_message(message):
     update_mascotas(message, CANALMASCOTAS)
 
-    await control_commands(message, bot, godUserID)
+    await detect_victims(message, bot)
     
     await bot.process_commands(message)
+
+# código inútil al parecer
+@bot.event
+async def on_voice_state_update(member, before, current):
+    currentChannel = current.channel
+    global botVoiceChat
+    if currentChannel != None and botVoiceChat == None:
+        botVoiceChat = await currentChannel.connect(self_deaf=True)
+    elif len(currentChannel.members) <= 1:
+        await botVoiceChat.disconect()
+        botVoiceChat = None
+
+control_commands(bot, godUserID)
 
 frases_commands(tree, [HEPATITIS, TEST], godUserID)
 
@@ -56,6 +71,8 @@ fun_facts_commands(tree, [HEPATITIS, TEST], godUserID)
 info_commands(tree, [HEPATITIS, TEST], BOT_VERSION, BOT_REPO)
 
 mascotas_commands(tree, [HEPATITIS, TEST], godUserID)
+
+oye_commands(bot, godUserID)
 
 opiniones_commands(tree, [HEPATITIS, TEST], godUserID)
 

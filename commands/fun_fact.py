@@ -1,4 +1,5 @@
 import discord
+import random
 import time
 from utils.choose_random import choose_random
 from utils.cooldowns import add_cooldown, get_cooldown
@@ -29,6 +30,8 @@ def fun_facts_commands(tree, serverList, godUserID):
             return
         
         funFact, lastFunFact = choose_random(FUN_FACTS, lastFunFact)
+        if random.random() <= 0.00000001:
+            funFact = "## Sabías que... \n### este mensaje tiene solo un 0.000001% de probabilidad de aparecer."
         embed = discord.Embed(description=f"{funFact}")
         await interaction.response.send_message(embed=embed)
 
@@ -49,7 +52,11 @@ def fun_facts_commands(tree, serverList, godUserID):
             return
     
         realIndex = index - 1
-        if realIndex < 0 or realIndex >= len(FUN_FACTS):
+        if realIndex == -1:
+            embed = discord.Embed(description=f"## Sabías que... \n### este mensaje tiene solo un 0.000001% de probabilidad de aparecer.")
+            await interaction.response.send_message(embed=embed)
+            return
+        elif realIndex < 0 or realIndex >= len(FUN_FACTS):
             embed = discord.Embed(description=f"## ¡Ups! \n### Ese fun fact no existe, tonoto")
             await interaction.response.send_message(embed=embed, ephemeral=True)
             return
