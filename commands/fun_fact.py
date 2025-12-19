@@ -4,6 +4,7 @@ import time
 from utils.choose_random import choose_random
 from utils.cooldowns import add_cooldown, get_cooldown
 from utils.format_text import load_text
+from utils.probabilistic_event import ProbabilisticEvent
 
 FUN_FACTS = load_text("fun_facts.txt")
 lastFunFact = ""
@@ -30,7 +31,8 @@ def fun_facts_commands(tree, serverList, godUserID):
             return
         
         funFact, lastFunFact = choose_random(FUN_FACTS, lastFunFact)
-        if random.random() <= 0.00000001:
+        rare_event = ProbabilisticEvent(1, 10**6)
+        if rare_event:
             funFact = "## Sabías que... \n### este mensaje tiene solo un 0.000001% de probabilidad de aparecer."
         embed = discord.Embed(description=f"{funFact}")
         await interaction.response.send_message(embed=embed)
