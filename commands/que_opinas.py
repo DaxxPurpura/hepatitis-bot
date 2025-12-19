@@ -12,6 +12,8 @@ def opiniones_commands(tree, serverList, godUserID):
     @tree.command(name="queopinas", description="Preguntale a Hepatitis B(ot) que opina acerca de lo que se está hablando", guilds=serverList)
     async def que_opinas(interaction: discord.Interaction):
         userID = interaction.user.id
+
+        '''
         if userID != godUserID:
             cooldown = get_cooldown(userID, "queopinas", OPINIONES_COOLDOWN)
             if cooldown > 0:
@@ -19,6 +21,7 @@ def opiniones_commands(tree, serverList, godUserID):
                 await interaction.response.send_message(embed=embed, ephemeral=True)
                 return
             add_cooldown(userID, "queopinas")
+        '''
 
         if not OPINIONES:
             embed = discord.Embed(description="### No hay opiniones cargadas")

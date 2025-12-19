@@ -14,7 +14,8 @@ def frases_commands(tree, serverList, godUserID):
     async def frase_funny(interaction: discord.Interaction):
         userID = interaction.user.id
         global lastFrase
-    
+
+        '''
         if userID != godUserID:
             cooldown = get_cooldown(userID, "frasefunny", FRASES_COOLDOWN)
             if cooldown > 0:
@@ -22,6 +23,7 @@ def frases_commands(tree, serverList, godUserID):
                 await interaction.response.send_message(embed=embed, ephemeral=True)
                 return
             add_cooldown(userID, "frasefunny")
+        '''
 
         if not FRASES:
             embed = discord.Embed(description="### No hay frases cargadas")

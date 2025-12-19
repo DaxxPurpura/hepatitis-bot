@@ -18,7 +18,8 @@ def mascotas_commands(tree, serverList, godUserID):
     async def mascota(interaction: discord.Interaction):
         userID = interaction.user.id
         global lastMascota
-    
+
+        '''
         if userID != godUserID:
             cooldown = get_cooldown(userID, "mascota", MASCOTA_COOLDOWN)
             if cooldown > 0:
@@ -26,6 +27,7 @@ def mascotas_commands(tree, serverList, godUserID):
                 await interaction.response.send_message(embed=embed, ephemeral=True)
                 return
             add_cooldown(userID, "mascota")
+        '''
 
         if not MASCOTAS:
             embed = discord.Embed(description="### No hay mascotas cargadas")

@@ -1,15 +1,15 @@
 ## Comandos de Hepatitis B(ot)
-### /frasefunny: Invoca una frase del https://discord.com/channels/1018626508853629149/1429287959303164085 (30 segundos)
+### /frasefunny: Invoca una frase del https://discord.com/channels/1018626508853629149/1429287959303164085
 ### /forzarfrase [index: int]: Fuerza la frase número [index] del https://discord.com/channels/1018626508853629149/1429287959303164085 (15 minutos)
 ### /frases: Muestra la lista de frases para saber el índice de cada frase
 
-### /mascota: Invoca una mascota de https://discord.com/channels/1018626508853629149/1442192026962759795 (30 segundos)
+### /mascota: Invoca una mascota de https://discord.com/channels/1018626508853629149/1442192026962759795
 
-### /queopinas:  Preguntale a Hepatitis B(ot) que opina acerca de lo que se está hablando (30 segundos)
+### /queopinas:  Preguntale a Hepatitis B(ot) que opina acerca de lo que se está hablando
 ### /forzarqueopinas [index: int]: Fuerza la opinión número [index] de Hepatitis B(ot) (15 minutos)
 ### /opiniones: Muestra la lista de opiniones para saber el índice de cada opinión
 
-### /funfact: Invoca un facto jijoso de Hepatitis B(ot) (30 segundos)
+### /funfact: Invoca un facto jijoso de Hepatitis B(ot)
 ### /forzarfunfact [index: int]: Fuerza el facto jijoso número [index] de Hepatitis B(ot) (15 minutos)
 ### /funfacts: Muestra la lista de factos jijosos para saber el índice de cada facto jijoso
 

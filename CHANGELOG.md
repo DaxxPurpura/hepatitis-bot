@@ -1,5 +1,10 @@
 # Changelog
 
+## [1.4.2] - 2025-12-19
+
+- Comandos /frasefunny, /mascotas, /queopinas y /funfact ahora no tienen cooldown.
+    - Esto puede llegar a revertirse en cualquier momento si es que se abusa de ellos.
+
 ## [1.4.1] - 2025-12-19
 
 - Fun fact "Sabías que... este mensaje tiene solo un 0.000001% de probabilidad de aparecer." ahora realmente tiene 0.000001% de probabilidad de aparecer (de nuevo, pero esta vez las probabilidades son correctas. Thx Geo).

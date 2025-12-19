@@ -17,6 +17,7 @@ def fun_facts_commands(tree, serverList, godUserID):
         userID = interaction.user.id
         global lastFunFact
 
+        '''
         if userID != godUserID:
             cooldown = get_cooldown(userID, "funfact", FUN_FACTS_COOLDOWN)
             if cooldown > 0:
@@ -24,6 +25,7 @@ def fun_facts_commands(tree, serverList, godUserID):
                 await interaction.response.send_message(embed=embed, ephemeral=True)
                 return
             add_cooldown(userID, "funfact")
+        '''
 
         if not FUN_FACTS:
             embed = discord.Embed(description="### No hay fun facts cargados")
