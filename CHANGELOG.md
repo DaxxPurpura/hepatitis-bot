@@ -1,5 +1,9 @@
 # Changelog
 
+## [1.4.3] - 2025-12-21
+
+- Añadidas nuevas frases y opiniones a Hepatitis B(ot).
+
 ## [1.4.2] - 2025-12-19
 
 - Comandos /frasefunny, /mascotas, /queopinas y /funfact ahora no tienen cooldown.
