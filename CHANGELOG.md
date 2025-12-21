@@ -1,5 +1,10 @@
 # Changelog
 
+## [1.4.4] - 2025-12-21
+
+- Añadido comando /cyber para ver los pasos a seguir para poder jugar en el servidor de Minecraft.
+- Añadido un 30% de que Hepatitis B(ot) responda "Matate." en vez de "No nada." con el comando /oye.
+
 ## [1.4.3] - 2025-12-21
 
 - Añadidas nuevas frases y opiniones a Hepatitis B(ot).

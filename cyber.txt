@@ -1,0 +1,13 @@
+# Tutorial para el cyber
+
+## Los que usan PrismLauncher:
+- Descargá esto: https://drive.google.com/file/d/1b3SjrBDEjdHYMJFCbEPkzCtJ8IqQgUls/view?usp=drive_link.
+- Ve a la carpeta de instancias (`%appdata%/PrismLauncher/Instances`).
+- Descomprimí el `.zip` (Debe quedar en su carpetita, o sea Cyber5, no los archivos sueltos).
+- Abrí el PrismLauncher e iniciá.
+
+## Los que no usan PrismLauncher:
+- Descargá esto: https://drive.google.com/file/d/1H3sa2NXyfJnrEzOU4yVEWP55Czz7Etjf/view?usp=sharing.
+- Ve a .minecraft (En `%appdata%`).
+- Descomprimí el `.zip`, fijense de que la carpeta `mods` este vacia antes.
+- Y descargá Fabric: https://fabricmc.net/.

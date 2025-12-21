@@ -1,5 +1,4 @@
 import discord
-import random
 import time
 from utils.choose_random import choose_random
 from utils.cooldowns import add_cooldown, get_cooldown

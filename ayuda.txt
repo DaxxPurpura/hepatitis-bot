@@ -16,7 +16,9 @@
 ### /mensaje [mensaje]: Enviá [mensaje] como Hepatitis B(ot). Puede responder a otros mensajes (20 minutos)
 ### /reaccion [emoji]: Hepatitis B(ot) reacciona con [emoji] al mensaje al que estás respondiendo (15 minutos)
 ### /noreaccion [emoji]: Hepatitis B(ot) quita la reacción [emoji] al mensaje al que estás respondiendo (15 minutos)
+### /oye: Hepatitis B(ot) le dice "Oye" a alguien y la próxima vez que esa persona envíe un mensaje en ese canal, Hepatitis B(ot) le dirá "No nada." (30% de decirle "Matate."). Si no se responde a un mensaje al enviar este comando, Hepatitis B(ot) le dirá "Oye" a todos, y la siguiente persona en enviar un mensaje será la víctima de Hepatitis B(ot) (15 minutos)
 
+### /cyber: Muestra los pasos a seguir para poder jugar en el servidor de Minecraft
 ### /version: Muestra la versión de Hepatitis B(ot)
 ### /repo: Muestra el repositorio de GitHub de Hepatitis B(ot)
 ### /changelog: Muestra el changelog de Hepatitis B(ot)

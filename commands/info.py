@@ -39,3 +39,9 @@ def info_commands(tree, serverList, botVersion, botRepo):
         with open("ayuda.txt", "r", encoding="utf-8") as file:
             embed = discord.Embed(description=f"{file.read()}")
         await interaction.response.send_message(embed=embed, ephemeral=True)
+
+    @tree.command(name="cyber", description="Muestra los pasos a seguir para poder jugar en el servidor de Minecraft", guilds=serverList)
+    async def cyber(interaction: discord.Interaction):
+        with open("cyber.txt", "r", encoding="utf-8") as file:
+            embed = discord.Embed(description=f"{file.read()}")
+        await interaction.response.send_message(embed=embed, ephemeral=True)

@@ -1,6 +1,7 @@
 import discord
 import time
 from utils.cooldowns import add_cooldown, get_cooldown
+from utils.probabilistic_event import ProbabilisticEvent
 
 OYE_COOLDOWN = 900 # 15 mins
 channelOye = {}
@@ -40,9 +41,14 @@ async def detect_victims(message, bot):
     if message.author == bot.user:
         return
     
+    reply = "No nada."
+    rare_event = ProbabilisticEvent(3, 10)
+    if rare_event:
+        reply = "Matate."
+    
     if channelOye[message.channel] == "all":
-        await message.reply("No nada.")
+        await message.reply(reply)
         channelOye[message.channel] = None
     elif channelOye[message.channel] == message.author:
-        await message.reply("No nada.")
+        await message.reply(reply)
         channelOye[message.channel] = None
