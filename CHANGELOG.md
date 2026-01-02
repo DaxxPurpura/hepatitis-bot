@@ -1,5 +1,10 @@
 # Changelog
 
+## [1.4.5] - 2026-01-02
+
+- Añadido comando /crouch para saber las Horas y minutos que Se llevandesde que se inició Hepatitis B(ot).
+- Quitado comando /cyber porque sí.
+
 ## [1.4.4] - 2025-12-21
 
 - Añadido comando /cyber para ver los pasos a seguir para poder jugar en el servidor de Minecraft.
@@ -20,7 +25,7 @@
 
 ## [1.4.0] - 2025-12-19
 
-- (Holly Molly)
+- (Holy Moly)
 - Añadido comando /oye para "oye, no nada.".
 - Añadida la posibilidad de que Hepatitis B(ot) se una a canales de voz (no funciona xd).
 - Comandos /mensaje, /reaccion y /noreaccion ahora solo se activan si el mensaje empieza con el comando.

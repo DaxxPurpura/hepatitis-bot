@@ -10,6 +10,7 @@ from commands.info import info_commands
 from commands.mascotas import init_mascotas, mascotas_commands, update_mascotas
 from commands.oye import oye_commands, detect_victims
 from commands.que_opinas import opiniones_commands
+from datetime import datetime
 
 load_dotenv()
 token = os.getenv('DISCORD_TOKEN') # Agregá la token de tu bot al .env
@@ -28,6 +29,7 @@ tree = bot.tree
 BOT_VERSION = "1.4.4"
 BOT_REPO = "https://github.com/DaxxPurpura/hepatitis-bot"
 botVoiceChat = None
+initTime = datetime.now()
 
 # Servers autorizados
 HEPATITIS = discord.Object(id=1018626508853629149)
@@ -68,7 +70,7 @@ frases_commands(tree, [HEPATITIS, TEST], godUserID)
 
 fun_facts_commands(tree, [HEPATITIS, TEST], godUserID)
 
-info_commands(tree, [HEPATITIS, TEST], BOT_VERSION, BOT_REPO)
+info_commands(tree, [HEPATITIS, TEST], BOT_VERSION, BOT_REPO, initTime)
 
 mascotas_commands(tree, [HEPATITIS, TEST], godUserID)
 

@@ -1,6 +1,7 @@
 import discord
+from datetime import datetime
 
-def info_commands(tree, serverList, botVersion, botRepo):
+def info_commands(tree, serverList, botVersion, botRepo, initTime):
     @tree.command(name="frases", description="Muestra la lista de frases para saber el índice de cada frase", guilds=serverList)
     async def frases(interaction: discord.Interaction):
         with open("frases.txt", "r", encoding="utf-8") as file:
@@ -40,8 +41,10 @@ def info_commands(tree, serverList, botVersion, botRepo):
             embed = discord.Embed(description=f"{file.read()}")
         await interaction.response.send_message(embed=embed, ephemeral=True)
 
-    @tree.command(name="cyber", description="Muestra los pasos a seguir para poder jugar en el servidor de Minecraft", guilds=serverList)
-    async def cyber(interaction: discord.Interaction):
-        with open("cyber.txt", "r", encoding="utf-8") as file:
-            embed = discord.Embed(description=f"{file.read()}")
-        await interaction.response.send_message(embed=embed, ephemeral=True)
+    @tree.command(name="crouch", description="Muestra las Horas y minutos que Se llevandesde que se inició Hepatitis B(ot)", guilds=serverList)
+    async def crouch(interaction: discord.Interaction):
+        currentTime = int((datetime.now() - initTime).total_seconds())
+        hours, left = divmod(currentTime, 3600)
+        minutes, __ = divmod(left, 60)
+        embed = discord.Embed(description=f"## Se llevan{hours} Horas y {minutes} minutos")
+        await interaction.response.send_message(embed=embed)
