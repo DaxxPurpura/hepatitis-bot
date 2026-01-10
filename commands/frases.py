@@ -4,7 +4,7 @@ from utils.choose_random import choose_random
 from utils.cooldowns import add_cooldown, get_cooldown
 from utils.format_text import load_text, format_text
 
-FRASES = load_text("frases.txt")
+frases = load_text("frases.txt")
 lastFrase = ""
 FRASES_COOLDOWN = 30
 FORZAR_FRASES_COOLDOWN = 900 # 15 mins
@@ -25,12 +25,12 @@ def frases_commands(tree, serverList, godUserID):
             add_cooldown(userID, "frasefunny")
         '''
 
-        if not FRASES:
+        if not frases:
             embed = discord.Embed(description="### No hay frases cargadas")
             await interaction.response.send_message(embed=embed, ephemeral=True)
             return
 
-        [frase, authors], lastFrase = choose_random(FRASES, lastFrase)
+        [frase, authors], lastFrase = choose_random(frases, lastFrase)
         authors = await format_text(interaction, authors, "user")
         embed = discord.Embed(description=f"{frase} \n### -ㅤ{authors}")
         await interaction.response.send_message(embed=embed)
@@ -46,18 +46,31 @@ def frases_commands(tree, serverList, godUserID):
                 return
             add_cooldown(userID, "forzarfrase")
 
-        if not FRASES:
+        if not frases:
             embed = discord.Embed(description="### No hay frases cargadas")
             await interaction.response.send_message(embed=embed, ephemeral=True)
             return
     
         realIndex = index - 1
-        if realIndex < 0 or realIndex >= len(FRASES):
+        if realIndex < 0 or realIndex >= len(frases):
             embed = discord.Embed(description=f"## ¡Ups! \n### Esa frase no existe, tonoto")
             await interaction.response.send_message(embed=embed, ephemeral=True)
             return
     
-        frase, authors = FRASES[realIndex]
+        frase, authors = frases[realIndex]
         authors = await format_text(interaction, authors, "user")
         embed = discord.Embed(description=f"{frase} \n### -ㅤ{authors}")
         await interaction.response.send_message(embed=embed)
+
+    @tree.command(name="cargarfrases", description="Actualiza la lista de frases", guilds=serverList)
+    async def cargar_frases(interaction: discord.Interaction):
+        global frases
+        frases = load_text("frases.txt")
+        embed = discord.Embed(description="### Se actualizó la lista de frases")
+        await interaction.response.send_message(embed=embed, ephemeral=True)
+
+    '''
+    @tree.command(name="frase", description="Crea una frase y la envía a museo de frases", guilds=serverList)
+    async def crear_frase(interaction: discord.Interaction, frase: str, autor: str):
+        userID = interaction.user.id
+    '''

@@ -26,7 +26,7 @@ client = discord.Client(intents=intents)
 bot = commands.Bot(command_prefix='/', intents=intents)
 tree = bot.tree
 
-BOT_VERSION = "1.4.5"
+botVersion = "1.5.0"
 BOT_REPO = "https://github.com/DaxxPurpura/hepatitis-bot"
 botVoiceChat = None
 initTime = datetime.now()
@@ -70,7 +70,7 @@ frases_commands(tree, [HEPATITIS, TEST], godUserID)
 
 fun_facts_commands(tree, [HEPATITIS, TEST], godUserID)
 
-info_commands(tree, [HEPATITIS, TEST], BOT_VERSION, BOT_REPO, initTime)
+info_commands(tree, [HEPATITIS, TEST], botVersion, BOT_REPO, initTime)
 
 mascotas_commands(tree, [HEPATITIS, TEST], godUserID)
 

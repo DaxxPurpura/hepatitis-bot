@@ -31,6 +31,10 @@ def oye_commands(bot, godUserID):
             return
         uffReferencia = ogMessage.reference
         replyMessage = await context.channel.fetch_message(uffReferencia.message_id)
+        if replyMessage.author == bot.user:
+            embed = discord.Embed(description=f"### Te odio, {context.author.display_name}.")
+            await context.send(embed=embed)
+            return
         channelOye[context.channel] = replyMessage.author
         await replyMessage.reply("Oye")
 

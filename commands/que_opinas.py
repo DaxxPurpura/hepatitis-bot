@@ -4,7 +4,7 @@ from utils.choose_random import choose_random
 from utils.cooldowns import add_cooldown, get_cooldown
 from utils.format_text import load_text, format_text
 
-OPINIONES = load_text("opiniones.txt")
+opiniones = load_text("opiniones.txt")
 OPINIONES_COOLDOWN = 30
 FORZAR_OPINIONES_COOLDOWN = 900 # 15 mins
 
@@ -23,12 +23,12 @@ def opiniones_commands(tree, serverList, godUserID):
             add_cooldown(userID, "queopinas")
         '''
 
-        if not OPINIONES:
+        if not opiniones:
             embed = discord.Embed(description="### No hay opiniones cargadas")
             await interaction.response.send_message(embed=embed, ephemeral=True)
             return
     
-        opinión = choose_random(OPINIONES, canRepeat=True)
+        opinión = choose_random(opiniones, canRepeat=True)
         opinión = await format_text(interaction, opinión, "emoji")
         embed = discord.Embed(description=f"{opinión}")
         await interaction.response.send_message(embed=embed)
@@ -44,18 +44,25 @@ def opiniones_commands(tree, serverList, godUserID):
                 return
             add_cooldown(userID, "forzarqueopinas")
 
-        if not OPINIONES:
+        if not opiniones:
             embed = discord.Embed(description="### No hay opiniones cargadas")
             await interaction.response.send_message(embed=embed, ephemeral=True)
             return
     
         realIndex = index - 1
-        if realIndex < 0 or realIndex >= len(OPINIONES):
+        if realIndex < 0 or realIndex >= len(opiniones):
             embed = discord.Embed(description=f"## ¡Ups! \n### Esa opinión no existe, tonoto")
             await interaction.response.send_message(embed=embed, ephemeral=True)
             return
     
-        opinión = OPINIONES[realIndex]
+        opinión = opiniones[realIndex]
         opinión = await format_text(interaction, opinión, "emoji")
         embed = discord.Embed(description=f"{opinión}")
         await interaction.response.send_message(embed=embed)
+
+    @tree.command(name="cargaropiniones", description="Actualiza la lista de opiniones", guilds=serverList)
+    async def cargar_opiniones(interaction: discord.Interaction):
+        global opiniones
+        opiniones = load_text("opiniones.txt")
+        embed = discord.Embed(description="### Se actualizó la lista de opiniones")
+        await interaction.response.send_message(embed=embed, ephemeral=True)

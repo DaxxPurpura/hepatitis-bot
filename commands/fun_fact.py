@@ -5,7 +5,7 @@ from utils.cooldowns import add_cooldown, get_cooldown
 from utils.format_text import load_text
 from utils.probabilistic_event import ProbabilisticEvent
 
-FUN_FACTS = load_text("fun_facts.txt")
+funFacts = load_text("fun_facts.txt")
 lastFunFact = ""
 FUN_FACTS_COOLDOWN = 30
 FORZAR_FUN_FACTS_COOLDOWN = 900 # 15 mins
@@ -26,12 +26,12 @@ def fun_facts_commands(tree, serverList, godUserID):
             add_cooldown(userID, "funfact")
         '''
 
-        if not FUN_FACTS:
+        if not funFacts:
             embed = discord.Embed(description="### No hay fun facts cargados")
             await interaction.response.send_message(embed=embed, ephemeral=True)
             return
         
-        funFact, lastFunFact = choose_random(FUN_FACTS, lastFunFact)
+        funFact, lastFunFact = choose_random(funFacts, lastFunFact)
         rare_event = ProbabilisticEvent(1, 10**6)
         if rare_event:
             funFact = "## Sabías que... \n### este mensaje tiene solo un 0.000001% de probabilidad de aparecer."
@@ -49,7 +49,7 @@ def fun_facts_commands(tree, serverList, godUserID):
                 return
             add_cooldown(userID, "forzarfunfact")
 
-        if not FUN_FACTS:
+        if not funFacts:
             embed = discord.Embed(description="### No hay fun facts cargados")
             await interaction.response.send_message(embed=embed, ephemeral=True)
             return
@@ -59,11 +59,18 @@ def fun_facts_commands(tree, serverList, godUserID):
             embed = discord.Embed(description=f"## Sabías que... \n### este mensaje tiene solo un 0.000001% de probabilidad de aparecer.")
             await interaction.response.send_message(embed=embed)
             return
-        elif realIndex < 0 or realIndex >= len(FUN_FACTS):
+        elif realIndex < 0 or realIndex >= len(funFacts):
             embed = discord.Embed(description=f"## ¡Ups! \n### Ese fun fact no existe, tonoto")
             await interaction.response.send_message(embed=embed, ephemeral=True)
             return
     
-        funFact = FUN_FACTS[realIndex]
+        funFact = funFacts[realIndex]
         embed = discord.Embed(description=f"{funFact}")
         await interaction.response.send_message(embed=embed)
+
+    @tree.command(name="cargarfunfacts", description="Actualiza la lista de fun facts", guilds=serverList)
+    async def cargar_fun_facts(interaction: discord.Interaction):
+        global funFacts
+        funFacts = load_text("fun_facts.txt")
+        embed = discord.Embed(description="### Se actualizó la lista de fun facts")
+        await interaction.response.send_message(embed=embed, ephemeral=True)

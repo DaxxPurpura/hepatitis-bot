@@ -20,7 +20,7 @@ def control_commands(bot, godUserID):
                 await context.send(embed=embed, delete_after=3)
                 return
             add_cooldown(userID, "mensaje")
-        actualMessage = ogMessage.content.replace("/mensaje ", "", 1)
+        actualMessage = ogMessage.content.replace("/mensaje", "", 1)
         if ogMessage.reference is None:
             await context.send(actualMessage)
             return

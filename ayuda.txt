@@ -1,17 +1,20 @@
 ## Comandos de Hepatitis B(ot)
 ### /frasefunny: Invoca una frase del https://discord.com/channels/1018626508853629149/1429287959303164085
 ### /forzarfrase [index: int]: Fuerza la frase número [index] del https://discord.com/channels/1018626508853629149/1429287959303164085 (15 minutos)
-### /frases: Muestra la lista de frases para saber el índice de cada frase
+### /verfrases: Muestra la lista de frases para saber el índice de cada frase
+### /cargarfrases: Actualiza la lista de frases
 
 ### /mascota: Invoca una mascota de https://discord.com/channels/1018626508853629149/1442192026962759795
 
 ### /queopinas:  Preguntale a Hepatitis B(ot) que opina acerca de lo que se está hablando
 ### /forzarqueopinas [index: int]: Fuerza la opinión número [index] de Hepatitis B(ot) (15 minutos)
-### /opiniones: Muestra la lista de opiniones para saber el índice de cada opinión
+### /veropiniones: Muestra la lista de opiniones para saber el índice de cada opinión
+### /cargaropiniones: Actualiza la lista de opiniones
 
 ### /funfact: Invoca un facto jijoso de Hepatitis B(ot)
 ### /forzarfunfact [index: int]: Fuerza el facto jijoso número [index] de Hepatitis B(ot) (15 minutos)
-### /funfacts: Muestra la lista de factos jijosos para saber el índice de cada facto jijoso
+### /verfunfacts: Muestra la lista de factos jijosos para saber el índice de cada facto jijoso
+### /cargarfunfacts: Actualiza la lista de fun facts
 
 ### /mensaje [mensaje]: Enviá [mensaje] como Hepatitis B(ot). Puede responder a otros mensajes (20 minutos)
 ### /reaccion [emoji]: Hepatitis B(ot) reacciona con [emoji] al mensaje al que estás respondiendo (15 minutos)

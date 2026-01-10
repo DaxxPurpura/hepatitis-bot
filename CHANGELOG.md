@@ -1,5 +1,18 @@
 # Changelog
 
+## [1.5.0] - 2026-01-10
+
+- Añadido comando /cargarfrases para actualizar la lista de frases.
+- Añadido comando /cargarfunfacts para actualizar la lista de fun facts.
+- Añadido comando /cargaropiniones para actualizar la lista de opiniones.
+- Comando /frases cambió a /verfrases.
+- Comando /verfrases ahora muestra el número de cada frase.
+- Comando /opiniones cambió a /veropiniones.
+- Comando /veropiniones ahora muestra el número de cada opinión.
+- Comando /funfacts cambió a /verfunfacts.
+- Comando /verfunfacts ahora muestra el número de cada fun fact.
+- Hepatitis B(ot) ya no puede ser softlockeado al usar el comando /oye contra él mismo (Hepatitis B(ot) te odia, Geoxxos.).
+
 ## [1.4.5] - 2026-01-02
 
 - Añadido comando /crouch para saber las Horas y minutos que Se llevandesde que se inició Hepatitis B(ot).
