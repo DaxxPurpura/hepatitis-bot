@@ -1,5 +1,6 @@
 import discord
 from datetime import datetime
+from utils.format_text import format_text
 
 def info_commands(tree, serverList, botVersion, botRepo, initTime):
     @tree.command(name="verfrases", description="Muestra la lista de frases para saber el índice de cada frase", guilds=serverList)
@@ -23,6 +24,7 @@ def info_commands(tree, serverList, botVersion, botRepo, initTime):
             for i, line in enumerate(file, start=1):
                 line = line.strip()
                 line = line.replace("#", "")
+                line = await format_text(interaction, line, "emoji")
                 lines.append(f"{i}: {line}")
             texto = "\n".join(lines)
             embed = discord.Embed(description=texto)
@@ -34,9 +36,9 @@ def info_commands(tree, serverList, botVersion, botRepo, initTime):
         with open("fun_facts.txt", "r", encoding="utf-8") as file:
             for i, line in enumerate(file, start=1):
                 line = line.strip()
-                line = line.replace("#", "")
-                line = line.replace("\\n", "")
-                lines.append(f"{i}: {line}")
+                __, funFact = line.split("\\n")
+                funFact = funFact.replace("#", "")
+                lines.append(f"{i}: {funFact}")
             texto = "\n".join(lines)
             embed = discord.Embed(description=texto)
         await interaction.response.send_message(embed=embed, ephemeral=True)

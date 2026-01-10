@@ -26,7 +26,7 @@ client = discord.Client(intents=intents)
 bot = commands.Bot(command_prefix='/', intents=intents)
 tree = bot.tree
 
-botVersion = "1.5.0"
+botVersion = "1.5.1"
 BOT_REPO = "https://github.com/DaxxPurpura/hepatitis-bot"
 botVoiceChat = None
 initTime = datetime.now()

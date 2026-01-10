@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.5.1] - 2026-01-10
+
+- Comando /veropiniones ahora muestra emojis de servidor.
+- Comando /verfunfacts ahora no muestra "Sabías que..." porque es repetitivo.
+- Añadidas nuevas frases y fun facts a Hepatitis B(ot).
+
 ## [1.5.0] - 2026-01-10
 
 - Añadido comando /cargarfrases para actualizar la lista de frases.

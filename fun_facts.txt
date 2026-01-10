@@ -2,7 +2,7 @@
 ## Sabías que...\n### el himno nacional español, “Marcha Real”, es uno de los pocos himnos en el mundo que no tiene letra.
 ## Sabías que...\n### el ketchup se vendía como medicina en 1834 para tratar la indigestión.
 ## Sabías que...\n### el primer correo electrónico enviado fue “QWERTYUIOP”, la primera fila del teclado.
-## Sabías que...\n### ‘WeChat’ en China es más grande que Instagram, con unos 900 millones de usuarios.
+## Sabías que...\n### “WeChat” en China es más grande que Instagram, con unos 900 millones de usuarios.
 ## Sabías que...\n### el café puede matar, pero sólo si tomas unas 100 tazas en un día.
 ## Sabías que...\n### en Ohio, Estados Unidos, está prohibido cazar ratones.
 ## Sabías que...\n### Rusia es más grande que Plutón.
@@ -13,9 +13,23 @@
 ## Sabías que...\n### el ataque de hipo más largo documentado duró 68 años.
 ## Sabías que...\n### la Universidad de Oxford es más antigua que la cultura azteca; sus inicios datan del año 1096.
 ## Sabías que...\n### darle click 10 millones de veces al ratón del ordenador te hace perder 1 caloría.
-## Sabías que...\n### la palabra cementerio proviene del griego ‘koimeterion’, que significa “dormitorio”.
+## Sabías que...\n### la palabra cementerio proviene del griego “koimeterion”, que significa “dormitorio”.
 ## Sabías que...\n### el país más antiguo del que se tiene registro es San Marino y se encuentra en Europa. Fue constituido en el año 301 d.C.
 ## Sabías que...\n### Venus es el único planeta que gira en el sentido de las agujas del reloj.
 ## Sabías que...\n### el 80% de las situaciones que te preocupan nunca llegarán a suceder. Lol.
 ## Sabías que...\n### la mayonesa es un invento español.
-## Sabías que...\n### Taumatawhakatangihangakoauauotamateaturipukakapikimaungahoronukupokaiwhenuakitanatahu es una colina de Nueva Zelanda que ostenta el Récord Guinness al nombre más largo del mundo.
+## Sabías que...\n### “Taumatawhakatangihangakoauauotamateaturipukakapikimaungahoronukupokaiwhenuakitanatahu” es una colina de Nueva Zelanda que ostenta el Récord Guinness al nombre más largo del mundo.
+## Sabías que...\n### La palabra japonesa “Kuchi zamishi” es el acto de comer cuando no se tiene hambre porque, literalmente, “la boca se siente sola”.
+## Sabías que...\n### Venus es el único planeta que gira en el sentido de las agujas del reloj. Viaja alrededor del Sol una vez cada 225 días terrestres, pero gira en el sentido de las agujas del reloj una vez cada 243 días.
+## Sabías que...\n### “Melifluo” es un sonido que resulta agradablemente suave y musical al escucharlo.
+## Sabías que...\n### La probabilidad de que exista una langosta azul es de una entre dos millones. Las langostas azules son de ese color debido a una anomalía genética que hace que produzcan más cantidad de una determinada proteína que de otras.
+## Sabías que...\n### El libro “A la recherche du temps perdu”, de Marcel Proust, contiene unos 9.609.000 caracteres, lo que lo convierte en el libro más largo del mundo. El título se traduce como “Recuerdo de las cosas pasadas”.
+## Sabías que...\n### Existe una palabra para designar a alguien que opina sobre algo de lo que no sabe nada. Un “ultracrepidario” es alguien que opina más allá de sus conocimientos.
+## Sabías que...\n### En Urano las estaciones duran 21 años.
+## Sabías que...\n### Yo morí el 9 de enero de 2026 en fuera-de-contexto.
+## Sabías que...\n### 我快没招了。
+## Sabías que...\n### El nombre del popular Yahoo es un acrónimo, y significa “Yet Another Hierarchical Officious Oracle”. 
+## Sabías que...\n### La dirección de tu casa es única en el mundo.
+## Sabías que...\n### El nombre Jessica fue inventado por Shakespeare.
+## Sabías que...\n### En Bangladesh, hacer trampas en un examen está castigado con pena de cárcel.
+## Sabías que...\n### Tienes los días contados.
