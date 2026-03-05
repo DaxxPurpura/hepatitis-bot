@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.6.0] - 2026-03-05
+
+- (Ya era hora 😈)
+- Añadido sistema de páginas para que finalmente el comando /verfrases funcione.
+- Añadidas nuevas frases y opiniones a Hepatitis B(ot).
+
 ## [1.5.1] - 2026-01-10
 
 - Comando /veropiniones ahora muestra emojis de servidor.

@@ -1,8 +1,40 @@
 import discord
 from datetime import datetime
 from utils.format_text import format_text
+from utils.frase_embed import frase_embed
 
 def info_commands(tree, serverList, botVersion, botRepo, initTime):
+    class FrasesView(discord.ui.View):
+        def __init__(self, páginas):
+            super().__init__(timeout=120)
+            self.páginas = páginas
+            self.página_actual = 0
+            self.update_buttons()
+
+        def update_buttons(self):
+            self.children[0].disabled = self.página_actual == 0
+            self.children[1].disabled = self.página_actual == len(self.páginas) - 1
+
+        @discord.ui.button(label="<", style=discord.ButtonStyle.primary)
+        async def anterior_callback(self, interaction: discord.Interaction, button: discord.ui.Button):
+            if self.página_actual > 0:
+                self.página_actual -= 1
+
+            self.update_buttons()
+
+            embed = frase_embed(self.páginas[self.página_actual], self.página_actual, len(self.páginas))
+            await interaction.response.edit_message(embed=embed, view=self)
+
+        @discord.ui.button(label=">", style=discord.ButtonStyle.primary)
+        async def siguiente_callback(self, interaction: discord.Interaction, button: discord.ui.Button):
+            if self.página_actual < len(self.páginas) - 1:
+                self.página_actual += 1
+
+            self.update_buttons()
+
+            embed = frase_embed(self.páginas[self.página_actual], self.página_actual, len(self.páginas))
+            await interaction.response.edit_message(embed=embed, view=self)
+
     @tree.command(name="verfrases", description="Muestra la lista de frases para saber el índice de cada frase", guilds=serverList)
     async def ver_frases(interaction: discord.Interaction):
         lines = []
@@ -13,9 +45,11 @@ def info_commands(tree, serverList, botVersion, botRepo, initTime):
                 frase = frase.replace("#", "")
                 frase = frase.replace("\\n", " |")
                 lines.append(f"{i}: {frase}")
-            texto = "\n".join(lines)
-            embed = discord.Embed(description=texto)
-        await interaction.response.send_message(embed=embed, ephemeral=True)
+            
+            páginas = [lines[i:i+50] for i in range(0, len(lines), 50)] # Divide las frases en páginas de 50 frases cada una
+            
+            embed = frase_embed(páginas[0], 0, len(páginas))
+        await interaction.response.send_message(embed=embed, ephemeral=True, view=FrasesView(páginas))
 
     @tree.command(name="veropiniones", description="Muestra la lista de opiniones para saber el índice de cada opinión", guilds=serverList)
     async def ver_opiniones(interaction: discord.Interaction):

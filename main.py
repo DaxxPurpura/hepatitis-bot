@@ -13,9 +13,8 @@ from commands.que_opinas import opiniones_commands
 from datetime import datetime
 
 load_dotenv()
-token = os.getenv('DISCORD_TOKEN') # Agregá la token de tu bot al .env
+TOKEN = os.getenv('DISCORD_TOKEN') # Agregá la token de tu bot al .env
 serverID = os.getenv('TEST_SERVER') # Agregá la ID de tu server al .env
-godUserID = int(os.getenv('GOD_USER')) # Agregá tu ID de usuario al .env
 
 handler = logging.FileHandler(filename='discord.log', encoding='utf-8', mode='w')
 
@@ -26,13 +25,15 @@ client = discord.Client(intents=intents)
 bot = commands.Bot(command_prefix='/', intents=intents)
 tree = bot.tree
 
-botVersion = "1.5.1"
+GOD_USER_ID = 528940084142014484
+botVersion = "1.6.0"
 BOT_REPO = "https://github.com/DaxxPurpura/hepatitis-bot"
 botVoiceChat = None
 initTime = datetime.now()
 
 # Servers autorizados
 HEPATITIS = discord.Object(id=1018626508853629149)
+PLANETA = discord.Object(id=1450568433467916533)
 TEST = discord.Object(id=serverID)
 
 CANALMASCOTAS = 1442192026962759795
@@ -41,11 +42,11 @@ CANALMASCOTAS = 1442192026962759795
 @bot.event
 async def on_ready():
     await tree.sync(guild=HEPATITIS)
+    await tree.sync(guild=PLANETA)
     await tree.sync(guild=TEST)
 
     await init_mascotas(bot, CANALMASCOTAS)
 
-@bot.event
 async def on_message(message):
     update_mascotas(message, CANALMASCOTAS)
 
@@ -64,18 +65,18 @@ async def on_voice_state_update(member, before, current):
         await botVoiceChat.disconect()
         botVoiceChat = None
 
-control_commands(bot, godUserID)
+control_commands(bot, GOD_USER_ID)
 
-frases_commands(tree, [HEPATITIS, TEST], godUserID)
+frases_commands(tree, [HEPATITIS, PLANETA, TEST], GOD_USER_ID)
 
-fun_facts_commands(tree, [HEPATITIS, TEST], godUserID)
+fun_facts_commands(tree, [HEPATITIS, PLANETA, TEST], GOD_USER_ID)
 
-info_commands(tree, [HEPATITIS, TEST], botVersion, BOT_REPO, initTime)
+info_commands(tree, [HEPATITIS, PLANETA, TEST], botVersion, BOT_REPO, initTime)
 
-mascotas_commands(tree, [HEPATITIS, TEST], godUserID)
+mascotas_commands(tree, [HEPATITIS, PLANETA, TEST], GOD_USER_ID)
 
-oye_commands(bot, godUserID)
+oye_commands(bot, GOD_USER_ID)
 
-opiniones_commands(tree, [HEPATITIS, TEST], godUserID)
+opiniones_commands(tree, [HEPATITIS, PLANETA, TEST], GOD_USER_ID)
 
-bot.run(token, log_handler=handler, log_level=logging.DEBUG)
+bot.run(TOKEN, log_handler=handler, log_level=logging.DEBUG)
