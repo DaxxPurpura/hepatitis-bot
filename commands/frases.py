@@ -1,15 +1,17 @@
 import discord
 import time
+
+from discord import ui
 from utils.choose_random import choose_random
 from utils.cooldowns import add_cooldown, get_cooldown
-from utils.format_text import load_text, format_text
+from utils.format_text import load_text, format_text, format_frase
 
 frases = load_text("frases.txt")
 lastFrase = ""
 FRASES_COOLDOWN = 30
 FORZAR_FRASES_COOLDOWN = 900 # 15 mins
 
-def frases_commands(tree, serverList, godUserID):
+def frases_commands(tree, serverList, godUserID, canalMuseoDeFrases):
     @tree.command(name="frasefunny", description="Invoca una frase del museo de frases", guilds=serverList)
     async def frase_funny(interaction: discord.Interaction):
         userID = interaction.user.id
@@ -69,8 +71,78 @@ def frases_commands(tree, serverList, godUserID):
         embed = discord.Embed(description="### Se actualizó la lista de frases")
         await interaction.response.send_message(embed=embed, ephemeral=True)
 
-    '''
-    @tree.command(name="frase", description="Crea una frase y la envía a museo de frases", guilds=serverList)
-    async def crear_frase(interaction: discord.Interaction, frase: str, autor: str):
-        userID = interaction.user.id
-    '''
+    class FrasePreView(discord.ui.View):
+        def __init__(self, oldFrase, oldAuthor, frase, authorsID, authorsDisplay):
+            super().__init__(timeout=120)
+            self.oldFrase = oldFrase
+            self.oldAuthor = oldAuthor
+            self.frase = frase
+            self.authorsID = authorsID
+            self.authorsDisplay = authorsDisplay
+
+        async def on_timeout(self):
+            try:
+                await self.message.delete()
+            except discord.NotFound:
+                pass
+
+        @discord.ui.button(label="Editar la frase", style=discord.ButtonStyle.primary)
+        async def editar_callback(self, interaction: discord.Interaction, button: discord.ui.Button):
+            await interaction.response.send_modal(MyModal(self.oldFrase, self.oldAuthor))
+
+        @discord.ui.button(label="Enviar al museo", style=discord.ButtonStyle.success)
+        async def enviar_callback(self, interaction: discord.Interaction, button: discord.ui.Button):
+            self.frase = self.frase.replace("\n", "\\n")
+            with open("frases.txt", "a", encoding="utf-8") as file:
+                file.write(f"\n{self.frase}={self.authorsID}")
+            
+            global frases
+            frases = load_text("frases.txt")
+
+            canal = interaction.client.get_channel(canalMuseoDeFrases)
+            embed = discord.Embed(description=f"{self.frase} \n### -ㅤ{self.authorsDisplay}\n\n-# Enviado por {interaction.user.name}")
+            await canal.send(embed=embed)
+            await interaction.response.send_message("### Frase enviada al museo de frases", ephemeral=True)
+
+            try:
+                await self.message.delete()
+            except discord.NotFound:
+                pass
+
+    class MyModal(ui.Modal):
+        def __init__(self, oldFrase : str, oldAuthor : str):
+            super().__init__(title="Crear frase")
+            self.oldFrase = oldFrase
+            self.oldAuthor = oldAuthor
+
+            self.frase = ui.TextInput(
+            label="Frase",
+            style=discord.TextStyle.paragraph,
+            default=self.oldFrase,
+            placeholder="{Esta es una frase}\n{Esta frase continúa abajo}+{Esto se verá abajo}\nEsta es una frase sin comillas")
+
+            self.fraseExplicación = ui.TextDisplay(content="-# Usá \"{\" para abrir comillas, \"}\" para cerrarlas y \"+\" para escribir en una línea nueva.\n-# Asegurate de escribir la frase colocando mayúsculas y tildes correctamente por favor.")
+
+            self.authors = ui.TextInput(
+            label="Autor",
+            style=discord.TextStyle.paragraph,
+            default=self.oldAuthor,
+            placeholder="{EL ARDIDO}+{haziel._}\n{mhofrio} hablando de yaoi\n{Geoxz_} hablándole a {Paulo el frases}")
+
+            self.authorExplicación = ui.TextDisplay(content="-# Si querés que la frase muestre automáticamente el apodo actualizado de un usuario, escribí su nombre de Discord o su apodo del servidor entre llaves \"{}\".\n-# Si hay varios autores, la forma predeterminada de separarlos es con un \"+\", pero también podés escribir texto antes, entre o después de los nombres.")
+
+            self.add_item(self.frase)
+            self.add_item(self.fraseExplicación)
+            self.add_item(self.authors)
+            self.add_item(self.authorExplicación)
+
+        async def on_submit(self, interaction: discord.Interaction):
+            frase, authors, authorsDisplay = await format_frase(interaction, self.frase.value, self.authors.value)
+            embed = discord.Embed(title="Preview de la frase", description=f"{frase} \n### -ㅤ{authorsDisplay}\n\n-# Si está bien escrita y no tiene ningún error (POR FAVOR ASEGURATE DE ESO), podés enviarla.")
+            view = FrasePreView(self.frase.value, self.authors.value, frase, authors, authorsDisplay)
+            await interaction.response.send_message(embed=embed, ephemeral=True, view=view)
+            view.message = await interaction.original_response()
+    
+    @tree.command(name="crearfrase", description="Crea una frase y la envía a museo de frases", guilds=serverList)
+    async def crear_frase(interaction: discord.Interaction):
+        await interaction.response.send_modal(MyModal("", ""))

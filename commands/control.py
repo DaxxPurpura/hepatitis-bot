@@ -44,7 +44,7 @@ def control_commands(bot, godUserID):
                 add_cooldown(userID, "reaccion")
             actualMessage = ogMessage.content.replace("/reaccion ", "", 1)
             if not actualMessage:
-                embed = discord.Embed(description=f"### Necesitás elegir un emoji para usar /reaccion.")
+                embed = discord.Embed(description=f"### Necesitás incluir un emoji para usar /reaccion.")
                 await context.send(embed=embed, delete_after=3)
                 return
             uffReferencia = ogMessage.reference
@@ -79,4 +79,3 @@ def control_commands(bot, godUserID):
         else:
             embed = discord.Embed(description=f"### Necesitás responder a un mensaje para usar /noreaccion.")
             await context.send(embed=embed, delete_after=3)
-        

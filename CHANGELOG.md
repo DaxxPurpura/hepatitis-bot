@@ -1,5 +1,16 @@
 # Changelog
 
+## [1.7.0] - 2026-05-31
+
+- (Mi salvación ha llegado...)
+- Añadido comando /crearfrase para crear una frase, añadirla a la lista de frases y enviarla automáticamente al museo de frases.
+- Añadido comando /chiste para que Hepatitis B(ot) cuente un chiste, solo faltan los chistes.
+- Añadido comando /forzarchiste para forzar a Hepatitis B(ot) a decir un chiste, solo faltan los chistes.
+- Añadido comando /cargarchistes para actualizar la lista de chistes.
+- Añadidas nuevas frases y fun facts a Hepatitis B(ot).
+- Implementado comando /adivinar para intentar adivinar quién dijo una frase del museo de frases, pero todavía falta lógica.
+- Implementado comando /forzaradivinar para forzar una frase del museo de frases para adivinar quién la dijo, pero todavía falta lógica.
+
 ## [1.6.0] - 2026-03-05
 
 - (Ya era hora 😈)

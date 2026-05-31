@@ -6,7 +6,7 @@ class debug:
 
     def log(self, message):
         if self.enabled:
-            # Obtiene de donde fue llamado la funcion
+            # Obtiene de donde fue llamada la funcion
             caller_frame = inspect.currentframe().f_back
             if caller_frame:
                 filename = caller_frame.f_code.co_filename.split('\\')[-1]
@@ -21,7 +21,8 @@ class debug:
     def disable(self):
         self.enabled = False
 
-
-#EXAMPLE
+"""
+EXAMPLE
 debugger = debug(enabled=True)
 debugger.log("This is a debug message.")
+"""

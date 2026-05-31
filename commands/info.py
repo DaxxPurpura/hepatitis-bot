@@ -4,7 +4,7 @@ from utils.format_text import format_text
 from utils.frase_embed import frase_embed
 
 def info_commands(tree, serverList, botVersion, botRepo, initTime):
-    class FrasesView(discord.ui.View):
+    class PáginasView(discord.ui.View):
         def __init__(self, páginas):
             super().__init__(timeout=120)
             self.páginas = páginas
@@ -14,6 +14,9 @@ def info_commands(tree, serverList, botVersion, botRepo, initTime):
         def update_buttons(self):
             self.children[0].disabled = self.página_actual == 0
             self.children[1].disabled = self.página_actual == len(self.páginas) - 1
+
+        async def on_timeout(self):
+            await self.message.edit(view=None)
 
         @discord.ui.button(label="<", style=discord.ButtonStyle.primary)
         async def anterior_callback(self, interaction: discord.Interaction, button: discord.ui.Button):
@@ -46,10 +49,11 @@ def info_commands(tree, serverList, botVersion, botRepo, initTime):
                 frase = frase.replace("\\n", " |")
                 lines.append(f"{i}: {frase}")
             
-            páginas = [lines[i:i+50] for i in range(0, len(lines), 50)] # Divide las frases en páginas de 50 frases cada una
-            
-            embed = frase_embed(páginas[0], 0, len(páginas))
-        await interaction.response.send_message(embed=embed, ephemeral=True, view=FrasesView(páginas))
+        páginas = [lines[i:i+50] for i in range(0, len(lines), 50)] # Divide las frases en páginas de 50 frases cada una
+        embed = frase_embed(páginas[0], 0, len(páginas))
+        view = PáginasView(páginas)
+        await interaction.response.send_message(embed=embed, ephemeral=True, view=view)
+        view.message = await interaction.original_response()
 
     @tree.command(name="veropiniones", description="Muestra la lista de opiniones para saber el índice de cada opinión", guilds=serverList)
     async def ver_opiniones(interaction: discord.Interaction):

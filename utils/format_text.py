@@ -47,3 +47,24 @@ async def format_text(interaction, textRaw: str, type: str):
             
             textRaw = textRaw.replace(f"{id}", "")
     return textRaw
+
+async def format_frase(interaction, fraseRaw: str, authorsRaw: str):
+    authorsRaw = authorsRaw.replace("+", "ㅤ|ㅤ")
+    authorsRawNew = authorsRaw
+    authorsDisplay = authorsRaw
+    guild = interaction.guild
+    if guild:
+        authors = re.findall(r"\{(.*?)\}", authorsRaw)
+        for author in authors:
+            member = guild.get_member_named(author)
+            if not member:
+                continue
+
+            authorsDisplay = authorsDisplay.replace(f"{{{author}}}", str(f"{member.display_name} ({member.name})"))
+            authorsRawNew = authorsRawNew.replace(f"{{{author}}}", str(member.id))
+    
+    frase = fraseRaw.replace("{", "❝").replace("}", "❞").replace("+", "\n## ")
+    frase = "## " + frase
+    authorsDisplay = authorsDisplay.replace("{", "").replace("}", "")
+    authorsRawNew = authorsRawNew.replace("{", "").replace("}", "")
+    return frase, authorsRawNew, authorsDisplay

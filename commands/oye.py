@@ -1,5 +1,6 @@
 import discord
 import time
+from utils.debugclass import debug
 from utils.cooldowns import add_cooldown, get_cooldown
 from utils.probabilistic_event import ProbabilisticEvent
 
@@ -39,6 +40,7 @@ def oye_commands(bot, godUserID):
         await replyMessage.reply("Oye")
 
 async def detect_victims(message, bot):
+    debug(Enabled=True).log("Detectando víctimas...")
     if channelOye.get(message.channel) is None:
         return
     
