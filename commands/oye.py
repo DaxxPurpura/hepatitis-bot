@@ -18,7 +18,7 @@ def oye_commands(bot, godUserID):
             embed = discord.Embed(description=f"### Alguien ya usó ese comando en este canal.")
             await context.send(embed=embed, delete_after=2)
             return
-
+        '''
         if userID != godUserID:
             cooldown = get_cooldown(userID, "oye", OYE_COOLDOWN)
             if cooldown > 0:
@@ -26,6 +26,7 @@ def oye_commands(bot, godUserID):
                 await context.send(embed=embed, delete_after=3)
                 return
             add_cooldown(userID, "oye")
+        '''
         if ogMessage.reference is None:
             channelOye[context.channel] = "all"
             await ogMessage.channel.send("Oye")
@@ -40,7 +41,6 @@ def oye_commands(bot, godUserID):
         await replyMessage.reply("Oye")
 
 async def detect_victims(message, bot):
-    debug(Enabled=True).log("Detectando víctimas...")
     if channelOye.get(message.channel) is None:
         return
     

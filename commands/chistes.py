@@ -12,7 +12,6 @@ def chistes_commands(tree, serverList, godUserID):
     @tree.command(name="chiste", description="Invoca un chiste de Hepatitis B(ot)", guilds=serverList)
     async def chiste(interaction: discord.Interaction):
         userID = interaction.user.id
-
         '''
         if userID != godUserID:
             cooldown = get_cooldown(userID, "chiste", CHISTES_COOLDOWN)
@@ -22,7 +21,6 @@ def chistes_commands(tree, serverList, godUserID):
                 return
             add_cooldown(userID, "chiste")
         '''
-
         if not chistes:
             embed = discord.Embed(description="### No hay chistes cargados")
             await interaction.response.send_message(embed=embed, ephemeral=True)
@@ -36,6 +34,7 @@ def chistes_commands(tree, serverList, godUserID):
     @tree.command(name="forzarchiste", description="Fuerza un chiste de Hepatitis B(ot)", guilds=serverList)
     async def forzar_chiste(interaction: discord.Interaction, index: int):
         userID = interaction.user.id
+        '''
         if userID != godUserID:
             cooldown = get_cooldown(userID, "forzarchiste", FORZAR_CHISTES_COOLDOWN)
             if cooldown > 0:
@@ -43,7 +42,7 @@ def chistes_commands(tree, serverList, godUserID):
                 await interaction.response.send_message(embed=embed, ephemeral=True)
                 return
             add_cooldown(userID, "forzarchiste")
-
+        '''
         if not chistes:
             embed = discord.Embed(description="### No hay chistes cargados")
             await interaction.response.send_message(embed=embed, ephemeral=True)

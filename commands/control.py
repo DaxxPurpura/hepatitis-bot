@@ -12,7 +12,7 @@ def control_commands(bot, godUserID):
         ogMessage = context.message
         userID = context.author.id
         await ogMessage.delete()
-
+        '''
         if userID != godUserID:
             cooldown = get_cooldown(userID, "mensaje", MENSAJE_COOLDOWN)
             if cooldown > 0:
@@ -20,6 +20,7 @@ def control_commands(bot, godUserID):
                 await context.send(embed=embed, delete_after=3)
                 return
             add_cooldown(userID, "mensaje")
+        '''
         actualMessage = ogMessage.content.replace("/mensaje", "", 1)
         if ogMessage.reference is None:
             await context.send(actualMessage)
@@ -35,6 +36,7 @@ def control_commands(bot, godUserID):
         await ogMessage.delete()
 
         if ogMessage.reference is not None:
+            '''
             if userID != godUserID:
                 cooldown = get_cooldown(userID, "reaccion", REACCION_COOLDOWN)
                 if cooldown > 0:
@@ -42,6 +44,7 @@ def control_commands(bot, godUserID):
                     await context.send(embed=embed, delete_after=3)
                     return
                 add_cooldown(userID, "reaccion")
+            '''
             actualMessage = ogMessage.content.replace("/reaccion ", "", 1)
             if not actualMessage:
                 embed = discord.Embed(description=f"### Necesitás incluir un emoji para usar /reaccion.")
@@ -61,6 +64,7 @@ def control_commands(bot, godUserID):
         await ogMessage.delete()
 
         if ogMessage.reference is not None:
+            '''
             if userID != godUserID:
                 cooldown = get_cooldown(userID, "noreaccion", NOREACCION_COOLDOWN)
                 if cooldown > 0:
@@ -68,6 +72,7 @@ def control_commands(bot, godUserID):
                     await context.send(embed=embed, delete_after=3)
                     return
                 add_cooldown(userID, "noreaccion")
+            '''
             actualMessage = ogMessage.content.replace("/noreaccion ", "", 1)
             if not actualMessage:
                 embed = discord.Embed(description=f"### Necesitás elegir un emoji para usar /noreaccion.")

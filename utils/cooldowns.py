@@ -11,7 +11,11 @@ cooldowns = {
     "mensaje": {},
     "reaccion": {},
     "noreaccion": {},
-    "oye": {}
+    "oye": {},
+    "chiste": {},
+    "forzarchiste": {},
+    "adivinar": {},
+    "forzaradivinar": {}
 }
 
 # Añadir cooldown a userID

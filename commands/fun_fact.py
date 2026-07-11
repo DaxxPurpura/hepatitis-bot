@@ -15,7 +15,6 @@ def fun_facts_commands(tree, serverList, godUserID):
     async def fun_fact(interaction: discord.Interaction):
         userID = interaction.user.id
         global lastFunFact
-
         '''
         if userID != godUserID:
             cooldown = get_cooldown(userID, "funfact", FUN_FACTS_COOLDOWN)
@@ -25,7 +24,6 @@ def fun_facts_commands(tree, serverList, godUserID):
                 return
             add_cooldown(userID, "funfact")
         '''
-
         if not funFacts:
             embed = discord.Embed(description="### No hay fun facts cargados")
             await interaction.response.send_message(embed=embed, ephemeral=True)
@@ -41,6 +39,7 @@ def fun_facts_commands(tree, serverList, godUserID):
     @tree.command(name="forzarfunfact", description="Fuerza un facto jijoso de Hepatitis B(ot)", guilds=serverList)
     async def forzar_fun_fact(interaction: discord.Interaction, index: int):
         userID = interaction.user.id
+        '''
         if userID != godUserID:
             cooldown = get_cooldown(userID, "forzarfunfact", FORZAR_FUN_FACTS_COOLDOWN)
             if cooldown > 0:
@@ -48,6 +47,7 @@ def fun_facts_commands(tree, serverList, godUserID):
                 await interaction.response.send_message(embed=embed, ephemeral=True)
                 return
             add_cooldown(userID, "forzarfunfact")
+        '''
 
         if not funFacts:
             embed = discord.Embed(description="### No hay fun facts cargados")

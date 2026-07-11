@@ -1,6 +1,13 @@
 # Changelog
 
-## [1.7.0] - 2026-05-31
+## [1.6.1] - 2026-07-11
+
+- Se mejoró la forma de crear frases para los usuarios, además de añadir apodos fijos para los integrantes de Hepatitis B y Planeta Chido.
+- Comandos /forzarfrase, /forzarqueopinas, /forzarfunfact, /mensaje, /reaccion, /noreaccion y /oye ahora no tienen cooldown.
+- Comando /oye ahora funciona correctamente.
+- Hepatitis B(ot) ya puede hacerte compañía en los canales de voz.
+
+## [1.6.0] - 2026-05-31
 
 - (Mi salvación ha llegado...)
 - Añadido comando /crearfrase para crear una frase, añadirla a la lista de frases y enviarla automáticamente al museo de frases.
@@ -11,7 +18,7 @@
 - Implementado comando /adivinar para intentar adivinar quién dijo una frase del museo de frases, pero todavía falta lógica.
 - Implementado comando /forzaradivinar para forzar una frase del museo de frases para adivinar quién la dijo, pero todavía falta lógica.
 
-## [1.6.0] - 2026-03-05
+## [1.5.2] - 2026-03-05
 
 - (Ya era hora 😈)
 - Añadido sistema de páginas para que finalmente el comando /verfrases funcione.

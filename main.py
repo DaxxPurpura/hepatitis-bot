@@ -24,14 +24,13 @@ handler = logging.FileHandler(filename='discord.log', encoding='utf-8', mode='w'
 intents = discord.Intents.default()
 intents.message_content = True
 intents.members = True
-client = discord.Client(intents=intents)
 bot = commands.Bot(command_prefix='/', intents=intents)
 tree = bot.tree
 
 GOD_USER_ID = 528940084142014484
-botVersion = "1.7.0"
+botVersion = "1.6.1"
 BOT_REPO = "https://github.com/DaxxPurpura/hepatitis-bot"
-botVoiceChat = None
+botVoiceClient = None
 initTime = datetime.now()
 
 # Servers autorizados
@@ -40,7 +39,6 @@ PLANETA = discord.Object(id=1450568433467916533)
 TEST = discord.Object(id=serverID)
 
 CANALMASCOTAS = 1442192026962759795
-CANALMUSEODEFRASES = 1429287959303164085
 
 # Sincronizar servers
 @bot.event
@@ -51,26 +49,33 @@ async def on_ready():
 
     await init_mascotas(bot, CANALMASCOTAS)
 
+@bot.event
 async def on_message(message):
     update_mascotas(message, CANALMASCOTAS)
 
     await detect_victims(message, bot)
 
-    debugger = debug(enabled=True)
-    debugger.log("mensaje")
-
     await bot.process_commands(message)
 
-# código inútil al parecer
 @bot.event
 async def on_voice_state_update(member, before, current):
+    if member.bot:
+        print("bot")
+        return
+    print("humano")
+    global botVoiceClient
     currentChannel = current.channel
-    global botVoiceChat
-    if currentChannel != None and botVoiceChat == None:
-        botVoiceChat = await currentChannel.connect(self_deaf=True)
-    elif len(currentChannel.members) <= 1:
-        await botVoiceChat.disconect()
-        botVoiceChat = None
+    if currentChannel is not None and botVoiceClient is None:
+        print("si")
+        try:
+            botVoiceClient = await currentChannel.connect(self_deaf=True)
+        except Exception as e:
+            print(e)
+    elif botVoiceClient is not None:
+        if len(botVoiceClient.channel.members) == 1:
+            print("no")
+            await botVoiceClient.disconnect()
+            botVoiceClient = None
 
 # adivinar_commands(tree, [HEPATITIS, PLANETA, TEST], GOD_USER_ID)
 
@@ -78,7 +83,7 @@ chistes_commands(tree, [HEPATITIS, PLANETA, TEST], GOD_USER_ID)
 
 control_commands(bot, GOD_USER_ID)
 
-frases_commands(tree, [HEPATITIS, PLANETA, TEST], GOD_USER_ID, CANALMUSEODEFRASES)
+frases_commands(tree, [HEPATITIS, PLANETA, TEST], GOD_USER_ID)
 
 fun_facts_commands(tree, [HEPATITIS, PLANETA, TEST], GOD_USER_ID)
 

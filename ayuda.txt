@@ -1,6 +1,6 @@
 ## Comandos de Hepatitis B(ot)
 ### /frasefunny: Invoca una frase del https://discord.com/channels/1018626508853629149/1429287959303164085
-### /forzarfrase [index: int]: Fuerza la frase número [index] del https://discord.com/channels/1018626508853629149/1429287959303164085 (15 minutos)
+### /forzarfrase [index: int]: Fuerza la frase número [index] del https://discord.com/channels/1018626508853629149/1429287959303164085
 ### /crearfrase: Abre una ventana en la que podés escribir una nueva frase con su(s) autor(es). En la ventana también estará explicada la forma correcta de utilizarla, así que si no sabés como, leela. Al terminar, la frase se enviará automáticamente al https://discord.com/channels/1018626508853629149/1429287959303164085
 ### /verfrases: Muestra la lista de frases para saber el índice de cada frase
 ### /cargarfrases: Actualiza la lista de frases
@@ -8,19 +8,23 @@
 ### /mascota: Invoca una mascota de https://discord.com/channels/1018626508853629149/1442192026962759795
 
 ### /queopinas:  Preguntale a Hepatitis B(ot) que opina acerca de lo que se está hablando
-### /forzarqueopinas [index: int]: Fuerza la opinión número [index] de Hepatitis B(ot) (15 minutos)
+### /forzarqueopinas [index: int]: Fuerza la opinión número [index] de Hepatitis B(ot)
 ### /veropiniones: Muestra la lista de opiniones para saber el índice de cada opinión
 ### /cargaropiniones: Actualiza la lista de opiniones
 
 ### /funfact: Invoca un facto jijoso de Hepatitis B(ot)
-### /forzarfunfact [index: int]: Fuerza el facto jijoso número [index] de Hepatitis B(ot) (15 minutos)
+### /forzarfunfact [index: int]: Fuerza el facto jijoso número [index] de Hepatitis B(ot)
 ### /verfunfacts: Muestra la lista de factos jijosos para saber el índice de cada facto jijoso
 ### /cargarfunfacts: Actualiza la lista de fun facts
 
-### /mensaje [mensaje]: Enviá [mensaje] como Hepatitis B(ot). Puede responder a otros mensajes (20 minutos)
-### /reaccion [emoji]: Hepatitis B(ot) reacciona con [emoji] al mensaje al que estás respondiendo (15 minutos)
-### /noreaccion [emoji]: Hepatitis B(ot) quita la reacción [emoji] al mensaje al que estás respondiendo (15 minutos)
-### /oye: Hepatitis B(ot) le dice "Oye" a alguien y la próxima vez que esa persona envíe un mensaje en ese canal, Hepatitis B(ot) le dirá "No nada." (30% de decirle "Matate."). Si no se responde a un mensaje al enviar este comando, la siguiente persona en enviar un mensaje será la víctima de Hepatitis B(ot) (15 minutos)
+### /chiste: Invoca un chiste de Hepatitis B(ot)
+### /forzarchiste: Fuerza un chiste de Hepatitis B(ot)
+### /cargarchistes: Actualiza la lista de chistes
+
+### /mensaje [mensaje]: Enviá [mensaje] como Hepatitis B(ot). Puede responder a otros mensajes
+### /reaccion [emoji]: Hepatitis B(ot) reacciona con [emoji] al mensaje al que estás respondiendo
+### /noreaccion [emoji]: Hepatitis B(ot) quita la reacción [emoji] al mensaje al que estás respondiendo
+### /oye: Hepatitis B(ot) le dice "Oye" a alguien y la próxima vez que esa persona envíe un mensaje en ese canal, Hepatitis B(ot) le dirá "No nada." (30% de decirle "Matate."). Si no se responde a un mensaje al enviar este comando, la siguiente persona en enviar un mensaje será la víctima de Hepatitis B(ot)
 
 ### /crouch: Muestra las Horas y minutos que Se llevandesde que se inició Hepatitis B(ot)
 ### /version: Muestra la versión de Hepatitis B(ot)
