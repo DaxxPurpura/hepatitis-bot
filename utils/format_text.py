@@ -76,8 +76,8 @@ async def format_frase(interaction, fraseRaw: str, authorsRaw: str):
         isOpeningQuote = not isOpeningQuote
 
     frase = "## " + fraseRaw.replace("\n", "\n## ")
-    authorsRawNew = authorsRawNew.replace("}{", "ㅤ|ㅤ").replace("{", "").replace("}", "")
-    authorsDisplay = authorsDisplay.replace("}{", "ㅤ|ㅤ").replace("{", "").replace("}", "")
+    authorsRawNew = authorsRawNew.replace("}{", "ㅤ|ㅤ").replace("} {", "ㅤ|ㅤ").replace("{", "").replace("}", "")
+    authorsDisplay = authorsDisplay.replace("}{", "ㅤ|ㅤ").replace("} {", "ㅤ|ㅤ").replace("{", "").replace("}", "")
     return frase, authorsRawNew, authorsDisplay
 
 def check_manual_nicknames(author: str, guild):
@@ -98,9 +98,9 @@ def check_manual_nicknames(author: str, guild):
         return guild.get_member(468213463840456713)
     elif author == "matías" or author == "matias" or author == "mati":
         return guild.get_member(836284886393946124)
-    elif author == "mho":
+    elif author == "mho" or author == "mhofrio":
         return guild.get_member(364507206118539264)
-    elif author == "pandemonic" or author == "pande":
+    elif author == "pandemonic" or author == "pande" or author == "tarkus" or author == "parsons":
         return guild.get_member(985241349357961356)
     elif author == "paulo":
         return guild.get_member(1449943226973683784)

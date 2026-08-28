@@ -1,8 +1,14 @@
 # Changelog
 
+## [1.6.2] - 2026-08-28
+
+- Añadidos apodos para Mho y Pandemonic.
+- Añadidas nuevas frases y un fun fact.
+- Quitados mensajes debug innecesarios.
+
 ## [1.6.1] - 2026-07-11
 
-- Se mejoró la forma de crear frases para los usuarios, además de añadir apodos fijos para los integrantes de Hepatitis B y Planeta Chido.
+- Mejorada la forma de crear frases para los usuarios, además de añadir apodos fijos para los integrantes de Hepatitis B y Planeta Chido.
 - Comandos /forzarfrase, /forzarqueopinas, /forzarfunfact, /mensaje, /reaccion, /noreaccion y /oye ahora no tienen cooldown.
 - Comando /oye ahora funciona correctamente.
 - Hepatitis B(ot) ya puede hacerte compañía en los canales de voz.

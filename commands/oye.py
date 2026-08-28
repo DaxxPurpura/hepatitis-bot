@@ -1,6 +1,5 @@
 import discord
 import time
-from utils.debugclass import debug
 from utils.cooldowns import add_cooldown, get_cooldown
 from utils.probabilistic_event import ProbabilisticEvent
 

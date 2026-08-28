@@ -3,7 +3,7 @@ from discord.ext import commands
 from dotenv import load_dotenv
 import logging
 import os
-from utils.debugclass import debug
+
 from commands.adivinar import adivinar_commands
 from commands.chistes import chistes_commands
 from commands.control import control_commands
@@ -28,7 +28,7 @@ bot = commands.Bot(command_prefix='/', intents=intents)
 tree = bot.tree
 
 GOD_USER_ID = 528940084142014484
-botVersion = "1.6.1"
+botVersion = "1.6.2"
 BOT_REPO = "https://github.com/DaxxPurpura/hepatitis-bot"
 botVoiceClient = None
 initTime = datetime.now()
@@ -60,20 +60,16 @@ async def on_message(message):
 @bot.event
 async def on_voice_state_update(member, before, current):
     if member.bot:
-        print("bot")
         return
-    print("humano")
     global botVoiceClient
     currentChannel = current.channel
     if currentChannel is not None and botVoiceClient is None:
-        print("si")
         try:
             botVoiceClient = await currentChannel.connect(self_deaf=True)
         except Exception as e:
             print(e)
     elif botVoiceClient is not None:
         if len(botVoiceClient.channel.members) == 1:
-            print("no")
             await botVoiceClient.disconnect()
             botVoiceClient = None
 
