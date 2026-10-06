@@ -1,5 +1,3 @@
-
-
 # Cargar archivos , separar archivos en un mismo mensaje
 async def load_attachments(bot, channelID):
     mascotas = []

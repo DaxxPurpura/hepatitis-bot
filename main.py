@@ -28,7 +28,7 @@ bot = commands.Bot(command_prefix='/', intents=intents)
 tree = bot.tree
 
 GOD_USER_ID = 528940084142014484
-botVersion = "1.6.2"
+botVersion = "1.6.3"
 BOT_REPO = "https://github.com/DaxxPurpura/hepatitis-bot"
 botVoiceClient = None
 initTime = datetime.now()
@@ -37,6 +37,7 @@ initTime = datetime.now()
 HEPATITIS = discord.Object(id=1018626508853629149)
 PLANETA = discord.Object(id=1450568433467916533)
 TEST = discord.Object(id=serverID)
+SERVERS = [HEPATITIS, PLANETA, TEST]
 
 CANALMASCOTAS = 1442192026962759795
 
@@ -73,22 +74,22 @@ async def on_voice_state_update(member, before, current):
             await botVoiceClient.disconnect()
             botVoiceClient = None
 
-# adivinar_commands(tree, [HEPATITIS, PLANETA, TEST], GOD_USER_ID)
+# adivinar_commands(tree, SERVERS, GOD_USER_ID)
 
-chistes_commands(tree, [HEPATITIS, PLANETA, TEST], GOD_USER_ID)
+chistes_commands(tree, SERVERS, GOD_USER_ID)
 
 control_commands(bot, GOD_USER_ID)
 
-frases_commands(tree, [HEPATITIS, PLANETA, TEST], GOD_USER_ID)
+frases_commands(tree, SERVERS, GOD_USER_ID)
 
-fun_facts_commands(tree, [HEPATITIS, PLANETA, TEST], GOD_USER_ID)
+fun_facts_commands(tree, SERVERS, GOD_USER_ID)
 
-info_commands(tree, [HEPATITIS, PLANETA, TEST], botVersion, BOT_REPO, initTime)
+info_commands(tree, SERVERS, botVersion, BOT_REPO, initTime)
 
-mascotas_commands(tree, [HEPATITIS, PLANETA, TEST], GOD_USER_ID)
+mascotas_commands(tree, SERVERS, GOD_USER_ID)
 
 oye_commands(bot, GOD_USER_ID)
 
-opiniones_commands(tree, [HEPATITIS, PLANETA, TEST], GOD_USER_ID)
+opiniones_commands(tree, SERVERS, GOD_USER_ID)
 
 bot.run(TOKEN, log_handler=handler, log_level=logging.DEBUG)

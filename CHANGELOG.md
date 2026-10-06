@@ -1,5 +1,10 @@
 # Changelog
 
+## [1.6.3] - 2026-10-06
+
+- Añadidos chistes (finally).
+- Añadidas nuevas frases, opiniones y un fun fact.
+
 ## [1.6.2] - 2026-08-28
 
 - Añadidos apodos para Mho y Pandemonic.
@@ -18,7 +23,7 @@
 - (Mi salvación ha llegado...)
 - Añadido comando /crearfrase para crear una frase, añadirla a la lista de frases y enviarla automáticamente al museo de frases.
 - Añadido comando /chiste para que Hepatitis B(ot) cuente un chiste, solo faltan los chistes.
-- Añadido comando /forzarchiste para forzar a Hepatitis B(ot) a decir un chiste, solo faltan los chistes.
+- Añadido comando /forzarchiste para forzar a Hepatitis B(ot) a contar un chiste, solo faltan los chistes.
 - Añadido comando /cargarchistes para actualizar la lista de chistes.
 - Añadidas nuevas frases y fun facts a Hepatitis B(ot).
 - Implementado comando /adivinar para intentar adivinar quién dijo una frase del museo de frases, pero todavía falta lógica.
