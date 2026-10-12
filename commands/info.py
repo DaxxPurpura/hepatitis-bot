@@ -41,7 +41,7 @@ def info_commands(tree, serverList, botVersion, botRepo, initTime):
     @tree.command(name="verfrases", description="Muestra la lista de frases para saber el índice de cada frase", guilds=serverList)
     async def ver_frases(interaction: discord.Interaction):
         lines = []
-        with open("frases.txt", "r", encoding="utf-8") as file:
+        with open("/data/frases.txt", "r", encoding="utf-8") as file:
             for i, line in enumerate(file, start=1):
                 line = line.strip()
                 frase, __ = line.split("=")
@@ -58,7 +58,7 @@ def info_commands(tree, serverList, botVersion, botRepo, initTime):
     @tree.command(name="veropiniones", description="Muestra la lista de opiniones para saber el índice de cada opinión", guilds=serverList)
     async def ver_opiniones(interaction: discord.Interaction):
         lines = []
-        with open("opiniones.txt", "r", encoding="utf-8") as file:
+        with open("/data/opiniones.txt", "r", encoding="utf-8") as file:
             for i, line in enumerate(file, start=1):
                 line = line.strip()
                 line = line.replace("#", "")
@@ -71,7 +71,7 @@ def info_commands(tree, serverList, botVersion, botRepo, initTime):
     @tree.command(name="verfunfacts", description="Muestra la lista de factos jijosos para saber el índice de cada facto jijoso", guilds=serverList)
     async def ver_fun_facts(interaction: discord.Interaction):
         lines = []
-        with open("fun_facts.txt", "r", encoding="utf-8") as file:
+        with open("/data/fun_facts.txt", "r", encoding="utf-8") as file:
             for i, line in enumerate(file, start=1):
                 line = line.strip()
                 __, funFact = line.split("\\n")
