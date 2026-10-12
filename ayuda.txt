@@ -7,6 +7,8 @@
 
 ### /mascota: Invoca una mascota de https://discord.com/channels/1018626508853629149/1442192026962759795
 
+### /imagen: Invoca una imagen del https://discord.com/channels/1018626508853629149/1557189522125492315
+
 ### /queopinas:  Preguntale a Hepatitis B(ot) que opina acerca de lo que se está hablando
 ### /forzarqueopinas [index: int]: Fuerza la opinión número [index] de Hepatitis B(ot)
 ### /veropiniones: Muestra la lista de opiniones para saber el índice de cada opinión

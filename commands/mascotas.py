@@ -8,7 +8,7 @@ MASCOTAS = []
 lastMascota = 0
 MASCOTA_COOLDOWN = 30
 
-# Carga imagenes del canal "mascotas"
+# Carga imágenes del canal "mascotas"
 async def init_mascotas(bot, canalMascotas):
     global MASCOTAS
     MASCOTAS = await load_attachments(bot, canalMascotas)
@@ -37,7 +37,7 @@ def mascotas_commands(tree, serverList, godUserID):
         mascota, lastMascota = choose_random(MASCOTAS, lastMascota)
         await interaction.response.send_message(mascota.url)
 
-# Actualiza la lista MASCOTAS con imagenes nuevas
+# Actualiza la lista MASCOTAS con imágenes nuevas
 def update_mascotas(message, canalMascotas):
     if message.channel.id == canalMascotas and message.attachments:
         for attachment in message.attachments:

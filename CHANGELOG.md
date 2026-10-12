@@ -1,5 +1,10 @@
 # Changelog
 
+## [1.6.4] - 2026-10-11
+
+- Añadido comando /imagen para invocar una imagen del museo de imágenes.
+- Añadidas nuevas frases.
+
 ## [1.6.3] - 2026-10-06
 
 - Añadidos chistes (finally).

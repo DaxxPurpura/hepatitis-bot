@@ -15,7 +15,8 @@ cooldowns = {
     "chiste": {},
     "forzarchiste": {},
     "adivinar": {},
-    "forzaradivinar": {}
+    "forzaradivinar": {},
+    "imágenes": {}
 }
 
 # Añadir cooldown a userID

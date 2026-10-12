@@ -9,10 +9,11 @@ from commands.chistes import chistes_commands
 from commands.control import control_commands
 from commands.frases import frases_commands
 from commands.fun_fact import fun_facts_commands
+from commands.imágenes import init_imágenes, imágenes_commands, update_imágenes
 from commands.info import info_commands
 from commands.mascotas import init_mascotas, mascotas_commands, update_mascotas
 from commands.oye import oye_commands, detect_victims
-from commands.que_opinas import opiniones_commands
+from commands.qué_opinas import opiniones_commands
 from datetime import datetime
 
 load_dotenv()
@@ -28,7 +29,7 @@ bot = commands.Bot(command_prefix='/', intents=intents)
 tree = bot.tree
 
 GOD_USER_ID = 528940084142014484
-botVersion = "1.6.3"
+botVersion = "1.6.4"
 BOT_REPO = "https://github.com/DaxxPurpura/hepatitis-bot"
 botVoiceClient = None
 initTime = datetime.now()
@@ -40,6 +41,7 @@ TEST = discord.Object(id=serverID)
 SERVERS = [HEPATITIS, PLANETA, TEST]
 
 CANALMASCOTAS = 1442192026962759795
+CANALIMÁGENES = 1557189522125492315
 
 # Sincronizar servers
 @bot.event
@@ -49,10 +51,12 @@ async def on_ready():
     await tree.sync(guild=TEST)
 
     await init_mascotas(bot, CANALMASCOTAS)
+    await init_imágenes(bot, CANALIMÁGENES)
 
 @bot.event
 async def on_message(message):
     update_mascotas(message, CANALMASCOTAS)
+    update_imágenes(message, CANALIMÁGENES)
 
     await detect_victims(message, bot)
 
@@ -83,6 +87,8 @@ control_commands(bot, GOD_USER_ID)
 frases_commands(tree, SERVERS, GOD_USER_ID)
 
 fun_facts_commands(tree, SERVERS, GOD_USER_ID)
+
+imágenes_commands(tree, SERVERS, GOD_USER_ID)
 
 info_commands(tree, SERVERS, botVersion, BOT_REPO, initTime)
 
