@@ -96,13 +96,13 @@ def frases_commands(tree, serverList, godUserID):
         @discord.ui.button(label="Enviar al museo", style=discord.ButtonStyle.success)
         async def enviar_callback(self, interaction: discord.Interaction, button: discord.ui.Button):
             line_count = 0
-            with open("frases.txt", "a+", encoding="utf-8") as file:
+            with open("/data/frases.txt", "a+", encoding="utf-8") as file:
                 file.write(f"\n{self.frase.replace('\n', '\\n')}={self.authorsID}")
                 file.seek(0)
                 line_count = sum(1 for line in file)
             
             global frases
-            frases = load_text(/"/data/frases.txt")
+            frases = load_text("/data/frases.txt")
             
             canal = interaction.client.get_channel(CANALMUSEODEFRASES)
             embed = discord.Embed(description=f"{self.frase} \n### -ㅤ{self.authorsDisplay}\n\n-# Frase N°{line_count} enviada por {interaction.user.name}")
