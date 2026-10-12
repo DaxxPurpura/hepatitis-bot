@@ -5,7 +5,7 @@ from utils.cooldowns import add_cooldown, get_cooldown
 from utils.format_text import load_text
 from utils.probabilistic_event import ProbabilisticEvent
 
-chistes = load_text("chistes.txt")
+chistes = load_text("/data/chistes.txt")
 lastChiste = ""
 CHISTES_COOLDOWN = 30
 FORZAR_CHISTES_COOLDOWN = 900 # 15 mins
@@ -78,6 +78,6 @@ def chistes_commands(tree, serverList, godUserID):
     @tree.command(name="cargarchistes", description="Actualiza la lista de chistes", guilds=serverList)
     async def cargar_chistes(interaction: discord.Interaction):
         global chistes
-        chistes = load_text("chistes.txt")
+        chistes = load_text("/data/chistes.txt")
         embed = discord.Embed(description="### Se actualizó la lista de chistes")
         await interaction.response.send_message(embed=embed, ephemeral=True)

@@ -5,7 +5,7 @@ from utils.choose_random import choose_random
 from utils.cooldowns import add_cooldown, get_cooldown
 from utils.format_text import load_text, format_text, format_frase
 
-frases = load_text("frases.txt")
+frases = load_text("/data/frases.txt")
 lastFrase = ""
 FRASES_COOLDOWN = 30
 FORZAR_FRASES_COOLDOWN = 900 # 15 mins
@@ -66,7 +66,7 @@ def frases_commands(tree, serverList, godUserID):
     @tree.command(name="cargarfrases", description="Actualiza la lista de frases", guilds=serverList)
     async def cargar_frases(interaction: discord.Interaction):
         global frases
-        frases = load_text("frases.txt")
+        frases = load_text("/data/frases.txt")
         embed = discord.Embed(description="### Se actualizó la lista de frases")
         await interaction.response.send_message(embed=embed, ephemeral=True)
 
@@ -96,13 +96,13 @@ def frases_commands(tree, serverList, godUserID):
         @discord.ui.button(label="Enviar al museo", style=discord.ButtonStyle.success)
         async def enviar_callback(self, interaction: discord.Interaction, button: discord.ui.Button):
             line_count = 0
-            with open("frases.txt", "a+", encoding="utf-8") as file:
+            with open("/data/frases.txt", "a+", encoding="utf-8") as file:
                 file.write(f"\n{self.frase.replace('\n', '\\n')}={self.authorsID}")
                 file.seek(0)
                 line_count = sum(1 for line in file)
             
             global frases
-            frases = load_text("frases.txt")
+            frases = load_text("/data/frases.txt")
             
             canal = interaction.client.get_channel(CANALMUSEODEFRASES)
             embed = discord.Embed(description=f"{self.frase} \n### -ㅤ{self.authorsDisplay}\n\n-# Frase N°{line_count} enviada por {interaction.user.name}")
