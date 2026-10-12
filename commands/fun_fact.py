@@ -5,7 +5,7 @@ from utils.cooldowns import add_cooldown, get_cooldown
 from utils.format_text import load_text
 from utils.probabilistic_event import ProbabilisticEvent
 
-funFacts = load_text("fun_facts.txt")
+funFacts = load_text("/data/fun_facts.txt")
 lastFunFact = ""
 FUN_FACTS_COOLDOWN = 30
 FORZAR_FUN_FACTS_COOLDOWN = 900 # 15 mins
@@ -71,6 +71,6 @@ def fun_facts_commands(tree, serverList, godUserID):
     @tree.command(name="cargarfunfacts", description="Actualiza la lista de fun facts", guilds=serverList)
     async def cargar_fun_facts(interaction: discord.Interaction):
         global funFacts
-        funFacts = load_text("fun_facts.txt")
+        funFacts = load_text("/data/fun_facts.txt")
         embed = discord.Embed(description="### Se actualizó la lista de fun facts")
         await interaction.response.send_message(embed=embed, ephemeral=True)

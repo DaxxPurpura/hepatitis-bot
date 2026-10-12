@@ -4,7 +4,7 @@ from utils.choose_random import choose_random
 from utils.cooldowns import add_cooldown, get_cooldown
 from utils.format_text import load_text, format_text
 
-frases = load_text("frases.txt")
+frases = load_text("/data/frases.txt")
 lastFrase = ""
 ADIVINAR_COOLDOWN = 30
 FORZAR_ADIVINAR_COOLDOWN = 900 # 15 mins
